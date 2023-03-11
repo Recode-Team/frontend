@@ -7,11 +7,17 @@ const Group = () => {
     return(
         <div>
             <div className={gStyle.head}>
-                grou
+                WhiteBoard
             </div>
             <div>
-                group
+                <h1 className={gStyle.myPJ}>내 프로젝트</h1>
+                <div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
+
         </div>
     )
 }
