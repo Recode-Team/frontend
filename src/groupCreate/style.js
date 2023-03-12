@@ -21,14 +21,16 @@ const groupStyle = makeStyles((theme)=>({
         margin:'10px',
         float:'right',
         display:'flex',
-        fontSize:'20px'
+        fontSize:'20px',
+
     },
 
     wbIcon:{
         margin:'10px',
         float:'right',
         display:'flex',
-        fontSize:'20px'
+        fontSize:'20px',
+
     },
 
     myPJ:{
@@ -36,25 +38,35 @@ const groupStyle = makeStyles((theme)=>({
         margin:'25px',
     },
 
-    PJP:{
+    pjp:{
         textAlign: 'center',
         height:'auto',
-        
+        margin:'120px'
+
     },
 
-    PJ:{
+    ph:{
+        display:'inline',
+        height:'90px',
+        width:'120px',
+
+    },
+
+    pj:{
         display:'inline',
         padding:'70px 120px',
+        margin:'30px',
         backgroundColor:'#ebeef6',
         border:'1px solid gray',
-        borderRadius:'10px',
-        margin:'50px',
+        borderRadius:'20px',
 
     },
 
-
-
-
+    a:{
+        display:'inline',
+        width:'20px'
+    }
+    
 }))
-  
-  export default groupStyle
+
+export default groupStyle

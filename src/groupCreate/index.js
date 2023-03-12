@@ -14,10 +14,23 @@ const Group = () => {
             </div>
             <div>
                 <h1 className={gStyle.myPJ}>내 프로젝트</h1>
-                <div className={gStyle.PJP}>
-                    <div className={gStyle.PJ}>A</div>
-                    <div className={gStyle.PJ}>B</div>
-                    <div className={gStyle.PJ}>C</div>
+                <div className={gStyle.pjp}>
+                    <div className={gStyle.ph}>
+                        <div className={gStyle.pj}>A</div>
+
+                    </div>
+                    <div className={gStyle.ph}>
+                        <div className={gStyle.pj}>A</div>
+
+                    </div>
+                    <div className={gStyle.ph}>
+                        <div className={gStyle.pj}>A</div>
+
+                    </div>
+                    <div className={gStyle.ph}>
+                        <div className={gStyle.pj}>A</div>
+
+                    </div>
                 </div>
             </div>
 
