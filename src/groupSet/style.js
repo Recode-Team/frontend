@@ -3,14 +3,20 @@ import { display } from "@mui/system";
 
 const groupSetStyle = makeStyles((theme)=>({
 
+    gsMain:{
+        height: '100%',
+        width: '100%',
+
+    },
+
     head:{
         height: '50px',
         background: 'FFFFFF',
-        border:'1px solid gray'
+        borderBottom:'1px solid gray'
     },
 
     wb1:{
-        margin:'10px',
+        margin:'5px',
         marginLeft:'20px',
         float:'left',
         display: 'flex',
@@ -28,46 +34,95 @@ const groupSetStyle = makeStyles((theme)=>({
     },
 
     wbIcon:{
-        margin:'10px',
+        margin:'15px',
         float:'right',
         display:'flex',
         fontSize:'20px',
 
     },
 
-    sMain:{
-        display:'flex',
-        position:'relative'
+    divLR:{
+        height:'100%',
+        width:'100%',
     },
 
-    sList:{
-        width:'150px',
-        // display:'flex',
-        padding:'300px 50px',
+    divL:{
+        display:'inline-block',
+        height:'100%',
+        width:'30%',
         borderRight:'1px solid gray',
-    
-    },
-
-    sImform:{
-        width:'150px',
-        // display:'flex',
-        padding:'70px 200px',
-        position:'relative'
+        float:'left',
 
     },
 
-    sP:{
-        float:'top',
-        position:'absolute',
+    divR:{
+        display:'inline-block',
+        height: '100%', 
+        width:'60%',
+
     },
 
-    as:{
-        padding:'70px 140px',
-        backgroundColor:'blue',
-        position:'absolute',
+    ul:{
 
-    }
+    },
+
+    li:{
+
+    },
+
+    menuName:{
+        borderBottom: '1px solid gray',
+        width:'100%',
+        display: 'flex',
+
+
+    },
+
+    hTow:{
+        marginBlockEnd:'0.2em',
+        marginBlockStart:'0.2em',
+        width:'100%',
+        textAlign:'center',
+        display: 'flex',
+        justifyContent: 'center',
+    },
+
+
 
 }))
 
 export default groupSetStyle
+
+
+// sMain:{
+//     display:'flex',
+//     position:'relative'
+// },
+
+// sList:{
+//     width:'150px',
+//     // display:'flex',
+//     padding:'300px 50px',
+//     borderRight:'1px solid gray',
+
+// },
+
+// sImform:{
+//     width:'150px',
+//     // display:'flex',
+//     padding:'70px 200px',
+//     position:'relative'
+
+// },
+
+// sP:{
+//     float:'top',
+//     position:'absolute',
+// },
+
+// as:{
+//     padding:'70px 140px',
+//     backgroundColor:'blue',
+//     position:'absolute',
+
+// }
