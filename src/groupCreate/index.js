@@ -6,12 +6,14 @@ const Group = () => {
     const gStyle = groupStyle();
 
     return(
-        <div>
+        <>
+
             <div className={gStyle.head}>
                 <span className={gStyle.wb1}>WhiteBoard</span>
                 <span className={gStyle.wbIcon}><HiUserCircle/></span>
                 <span className={gStyle.wb2}>내프로젝트</span>
             </div>
+
             <div>
                 <h1 className={gStyle.myPJ}>내 프로젝트</h1>
                 <div className={gStyle.pjp}>
@@ -33,8 +35,7 @@ const Group = () => {
                     </div>
                 </div>
             </div>
-
-        </div>
+        </>
     )
 }
 
