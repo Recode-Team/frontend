@@ -30,12 +30,12 @@ export const SignUp = ({ show, onHide }) => {
 
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
-            <Form.Control type="password" placeholder="비밀번호" />
+            <Form.Control placeholder="닉네임" />
           </Form.Group>
-
+          
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
-            <Form.Control placeholder="닉네임" />
+            <Form.Control type="password" placeholder="비밀번호" />
           </Form.Group>
         </Form>
       </Modal.Body>
