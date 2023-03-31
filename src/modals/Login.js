@@ -4,11 +4,11 @@ import { Modal, Button, Form, Container } from 'react-bootstrap';
 
 export const Login = ({ show, onHide }) => {
 
-  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onIdHandler = (event) => {
-    setId(event.currentTarget.value);
+  const onEmailHandler = (event) => {
+    setEmail(event.currentTarget.value);
   }
   const onPasswordHandler = (event) => {
     setPassword(event.currentTarget.value);
@@ -17,7 +17,7 @@ export const Login = ({ show, onHide }) => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    console.log('ID:', id)
+    console.log('email:', email)
     console.log('password:', password)
 }
 
@@ -39,7 +39,7 @@ export const Login = ({ show, onHide }) => {
         <Form>
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
-            <Form.Control type="id" placeholder="ID" value={id} onChange={onIdHandler}/>
+            <Form.Control type="id" placeholder="이메일" value={email} onChange={onEmailHandler}/>
           </Form.Group>
 
           <Form.Group className="mb-3">
