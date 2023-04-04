@@ -14,11 +14,32 @@ export const Login = ({ show, onHide }) => {
     setPassword(event.currentTarget.value);
   }
 
+  const [data, setData] = useState({
+    email: email,
+    password: password
+  })
+  const dataHandler = (e) => {
+    setData({
+      ...data,
+      [e.target.name]:e.target.value
+    })
+  }
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
     console.log('email:', email)
     console.log('password:', password)
+
+    fetch('http://127.0.0.1:27000/swagger', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log("결과: ", result));
 }
 
   return (

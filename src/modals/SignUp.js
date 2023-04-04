@@ -7,7 +7,6 @@ export const SignUp = ({ show, onHide }) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
 
   const [emailMsg, setEmailMsg] = useState("");
   const [nameMsg, setNameMsg] = useState("");
@@ -75,6 +74,21 @@ export const SignUp = ({ show, onHide }) => {
     console.log('email:', email)
     console.log('name:', name)
     console.log('password:', password)
+
+    fetch('http://localhost:27000/', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        name: name,
+        password: password
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log("결과: ", result))
+      .catch(error => console.error(error));
 }
 
   return (
