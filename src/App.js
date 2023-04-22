@@ -1,19 +1,20 @@
-import Header from "./layouts/Header";
+import React from 'react';
+import Header from './layouts/Header';
 import Footer from './layouts/Footer';
+import Main from './pages/Main';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <header>
+    <BrowserRouter>
+      <div>
         <Header />
-      </header>
-      <main>
-
-      </main>
-      <footer>
+        <Routes>
+          <Route path="/" element={<Main />} />
+        </Routes>
         <Footer />
-      </footer>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

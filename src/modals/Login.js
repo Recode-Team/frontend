@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-
 import { Modal, Button, Form, Container } from 'react-bootstrap';
 
-export const Login = ({ show, onHide }) => {
+export const Login = ({ show, onHide, setIsLogin }) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,32 +13,26 @@ export const Login = ({ show, onHide }) => {
     setPassword(event.currentTarget.value);
   }
 
-  const [data, setData] = useState({
-    email: email,
-    password: password
-  })
-  const dataHandler = (e) => {
-    setData({
-      ...data,
-      [e.target.name]:e.target.value
-    })
-  }
   const onSubmitHandler = (event) => {
     event.preventDefault();
+    const user = { email: email, password: password };
 
-    console.log('email:', email)
-    console.log('password:', password)
-
-    fetch('http://127.0.0.1:27000/swagger', {
+    fetch('http://13.124.244.199:27000/api/login', {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        'Accept': 'application/json'
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(user),
     })
       .then((response) => response.json())
-      .then((result) => console.log("결과: ", result));
+      .then((result) => {
+        console.log("result: ", result);
+        setIsLogin(true);
+        const welcomeMessage = document.getElementById('welcome-message');
+        welcomeMessage.textContent = `환영합니다 ${result.results.name}님!`;
+        onHide();
+      })
+      .catch(error => console.error(error));
 }
 
   return (
@@ -68,6 +61,7 @@ export const Login = ({ show, onHide }) => {
             <Form.Control type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler}/>
           </Form.Group>
         </Form>
+        <div id="welcome-message"></div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="primary" type="button" onClick={onSubmitHandler}>
