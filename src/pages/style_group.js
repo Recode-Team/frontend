@@ -59,14 +59,25 @@ const groupStyle = makeStyles((theme)=>({
         backgroundColor:'#ebeef6',
         border:'1px solid gray',
         borderRadius:'20px',
+        visibility: 'hidden',
 
     },
 
     a:{
         display:'inline',
         width:'20px'
+    },
+
+    cBtn:{
+        width:'120px',
+        height:'40px',
+        fontSize:'16px',
+        border:'none',
+        borderRadius:'5px',
+        backgroundColor:'#81BCFF',
+        marginLeft:'35px'
     }
-    
+
 }))
 
 export default groupStyle
