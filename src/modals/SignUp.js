@@ -70,24 +70,17 @@ export const SignUp = ({ show, onHide }) => {
   }
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    const user = { email: email, name: name, password: password };
 
-    console.log('email:', email)
-    console.log('name:', name)
-    console.log('password:', password)
-
-    fetch('http://localhost:27000/', {
+    fetch('http://13.124.244.199:27000/api/register', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        email: email,
-        name: name,
-        password: password
-      }),
+      body: JSON.stringify(user),
     })
       .then((response) => response.json())
-      .then((result) => console.log("결과: ", result))
+      .then((result) => console.log("results: ", result))
       .catch(error => console.error(error));
 }
 
