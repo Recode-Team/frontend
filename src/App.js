@@ -1,11 +1,9 @@
 import React from 'react';
-import Main from './pages/Main';
-import Layout from "./layouts/Layout";
-import Group from "./pages/CreateGroup"
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
+import Main from './pages/Main';
+import Group from "./pages/CreateGroup"
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
