@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Nav, Navbar, Button, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import SignUp from '../modals/SignUp';
 import Login from '../modals/Login';
 
@@ -7,9 +8,10 @@ const Header = () => {
   const [signUpOn, setSignUpOn] = useState(false);
   const [loginOn, setLoginOn] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-
+  const navigate = useNavigate();
   const handleLogout = () => {
     setIsLogin(false);
+    navigate('/');
   }
   
   return (
@@ -21,23 +23,23 @@ const Header = () => {
             <Container>
                 <Navbar.Brand>OUR BOARD</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Collapse class="nav navbar-nav navbar-right" id="basic-navbar-nav" >
                     <Nav className="me-auto">
                     {isLogin ? ( // 로그인 상태에 따라 분기처리
                         <Nav.Link>
-                            <Button variant="primary" onClick={handleLogout}>
+                            <Button class="btn btn-outline-primary" onClick={handleLogout}>
                                 로그아웃
                             </Button>
                         </Nav.Link>
                     ) : (
                     <>
                         <Nav.Link>
-                            <Button variant="primary" onClick={() => setLoginOn(true)}>
+                            <Button class="btn btn-outline-primary" onClick={() => setLoginOn(true)}>
                                 로그인
                             </Button>
                         </Nav.Link>
                         <Nav.Link>
-                            <Button variant="primary" onClick={() => setSignUpOn(true)}>
+                            <Button class="btn btn-outline-primary" onClick={() => setSignUpOn(true)}>
                                 회원가입
                             </Button>
                         </Nav.Link>
