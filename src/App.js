@@ -1,11 +1,19 @@
-import { Container } from "react-bootstrap";
-import Layout from "./layouts/Layout";
+import Header from "./layouts/Header";
+import Footer from './layouts/Footer';
 
 function App() {
   return (
-    <Layout>
-      <Container style={{ minHeight: "75vh" }}>App</Container>
-    </Layout>
+    <div>
+      <header>
+        <Header />
+      </header>
+      <main>
+
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
   );
 }
 
