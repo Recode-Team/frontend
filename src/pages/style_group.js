@@ -39,9 +39,9 @@ const groupStyle = makeStyles((theme)=>({
     },
 
     pjp:{
-        textAlign: 'center',
-        height:'auto',
-        margin:'120px'
+        // textAlign: 'center',
+        height:'auto'
+        // margin:'120px'
 
     },
 

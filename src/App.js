@@ -4,15 +4,10 @@ import Footer from './layouts/Footer';
 import Main from './pages/Main';
 import Group from "./pages/CreateGroup"
 // import WhiteBoard from
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    // <Layout>
-    //   <Main />
-    //   {/* <Route path="/group" element={<Group />} /> */}
-    // </Layout>
     <BrowserRouter>
       <div>
         <Header />
