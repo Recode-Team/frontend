@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
 import { Nav, Navbar, Button, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import SignUp from '../modals/SignUp';
 import Login from '../modals/Login';
 
 const Header = () => {
   const [signUpOn, setSignUpOn] = useState(false);
   const [loginOn, setLoginOn] = useState(false);
+  const navigate = useNavigate();
+  const goToGroup = () => {
+    navigate('/group');
+  }
   return (
     <>
     <SignUp show={signUpOn} onHide={() => setSignUpOn(false)} />
@@ -21,7 +26,10 @@ const Header = () => {
                             <Button variant="primary" onClick={() => setLoginOn(true)}>Login</Button>
                         </Nav.Link>
                         <Nav.Link>
-                            <Button variant="secondary" onClick={() => setSignUpOn(true)}>Sign Up</Button>
+                            <Button variant="primary" onClick={() => setSignUpOn(true)}>Sign Up</Button>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Button variant="secondary" onClick={() => goToGroup(true)}>Group</Button>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
