@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form, Container } from 'react-bootstrap';
 
 export const Login = ({ show, onHide, setIsLogin }) => {
+  const server = process.env.IP_URL;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +18,7 @@ export const Login = ({ show, onHide, setIsLogin }) => {
     event.preventDefault();
     const user = { email: email, password: password };
 
-    fetch('http://13.124.244.199:27000/api/login', {
+    fetch(`${server}/api/login`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
