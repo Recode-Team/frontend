@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form, Container } from 'react-bootstrap';
 
 export const SignUp = ({ show, onHide }) => {
-  const server = process.env.IP_URL;
+  const ipAddress = process.env.REACT_APP_IP_ADDRESS;
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -73,7 +73,7 @@ export const SignUp = ({ show, onHide }) => {
     e.preventDefault();
     const user = { email: email, name: name, password: password };
 
-    fetch(`${server}/api/register`, {
+    fetch(`${ipAddress}/api/register`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
