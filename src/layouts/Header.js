@@ -9,6 +9,9 @@ const Header = () => {
   const [loginOn, setLoginOn] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+  const goToGroup = () => {
+    navigate('/group');
+  }
   const handleLogout = () => {
     setIsLogin(false);
     navigate('/');
@@ -26,11 +29,16 @@ const Header = () => {
                     <Navbar.Collapse class="nav navbar-nav navbar-right" id="basic-navbar-nav" >
                     <Nav className="me-auto">
                     {isLogin ? ( // 로그인 상태에 따라 분기처리
+                    <>
                         <Nav.Link>
-                            <Button class="btn btn-outline-primary" onClick={handleLogout}>
+                            <Button variant="btn btn-outline-primary" onClick={() => goToGroup(true)}>Group</Button>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Button variant="btn btn-outline-primary" onClick={handleLogout}>
                                 로그아웃
                             </Button>
                         </Nav.Link>
+                    </>
                     ) : (
                     <>
                         <Nav.Link>
