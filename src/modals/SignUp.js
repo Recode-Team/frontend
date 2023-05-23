@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form, Container } from 'react-bootstrap';
 
 export const SignUp = ({ show, onHide }) => {
+  const server = process.env.IP_URL;
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -72,7 +73,7 @@ export const SignUp = ({ show, onHide }) => {
     e.preventDefault();
     const user = { email: email, name: name, password: password };
 
-    fetch('http://13.124.244.199:27000/api/register', {
+    fetch(`${server}/api/register`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -126,7 +127,7 @@ export const SignUp = ({ show, onHide }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="button" onClick={onSubmitHandler}>
+        <Button variant="primary" type="button" disabled={!isEmail || !isName || !isPassword || !isPasswordConfirm} onClick={onSubmitHandler}>
           완료
         </Button>
         <Button onClick={onHide}>취소</Button>
