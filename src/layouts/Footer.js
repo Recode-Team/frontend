@@ -6,7 +6,7 @@ const Footer = () => {
     <footer>
         <Container>
             <div style={{ textAlign:"center" }}>
-                &copy; 2023 RE:CODE. All Rights Reserved.
+                {/* &copy; 2023 RE:CODE. All Rights Reserved. */}
             </div>
         </Container>
     </footer>
