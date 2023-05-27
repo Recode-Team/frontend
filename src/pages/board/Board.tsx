@@ -36,11 +36,9 @@ function Info() {
 
 export default function Board() {
   return (
-    <>
-      <div className="tldraw">
-        <Info />
-        <Editor roomId={roomID} />
-      </div>
-    </>
+    <div className="tldraw">
+      <Info />
+      <Editor roomId={roomID} />
+    </div>
   );
 }
