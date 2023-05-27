@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form, Container } from 'react-bootstrap';
+import { Modal, Form, Container } from 'react-bootstrap';
+import './sign_style.css';
 
 export const SignUp = ({ show, onHide }) => {
   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
@@ -89,11 +90,10 @@ export const SignUp = ({ show, onHide }) => {
     <Modal
       show = {show}
       onHide = {onHide}
-      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-    <Container>
+    <Container id="top-modal-wrap">
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           회원가입
@@ -104,33 +104,30 @@ export const SignUp = ({ show, onHide }) => {
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
             <Form.Control type="email" placeholder="이메일" value={email} onChange={onEmailHandler}/>
-            <p align="right">{emailMsg}</p>
+            <p className="msg" align="right">{emailMsg}</p>
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
             <Form.Control placeholder="닉네임" value={name} onChange={onNameHandler}/>
-            <p align="right">{nameMsg}</p>
+            <p className="msg" align="right">{nameMsg}</p>
           </Form.Group>
           
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
             <Form.Control type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler}/>
-            <p align="right">{passwordMsg}</p>
+            <p className="msg" align="right">{passwordMsg}</p>
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
             <Form.Control type="password" placeholder="비밀번호 확인" value={passwordConfirm} onChange={onPasswordConfirm} />
-            <p align="right">{passwordConfirmMsg}</p>
+            <p className="msg" align="right">{passwordConfirmMsg}</p>
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="button" disabled={!isEmail || !isName || !isPassword || !isPasswordConfirm} onClick={onSubmitHandler}>
-          완료
-        </Button>
-        <Button onClick={onHide}>취소</Button>
+        <button className="modal-btn" disabled={!isEmail || !isName || !isPassword || !isPasswordConfirm} onClick={onSubmitHandler}>완료</button>
       </Modal.Footer>
     </Container>
     </Modal>
