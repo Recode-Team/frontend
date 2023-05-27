@@ -48,3 +48,8 @@ a {
   right: 0;
   top: 40px;
 }
+
+.recording{
+  position: absolute;
+}
+

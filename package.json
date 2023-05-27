@@ -25,6 +25,8 @@
     "redux": "^4.2.1",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.4.2",
+    "socket.io-client": "^4.6.1",
+    "styled-components": "^5.3.11",
     "typescript": "^5.0.4",
     "web-vitals": "^2.1.4",
     "y-presence": "^0.2.3",
