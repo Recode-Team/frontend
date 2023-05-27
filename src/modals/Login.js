@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form, Container } from 'react-bootstrap';
+import { Modal, Form, Container } from 'react-bootstrap';
+import './sign_style.css';
 
 export const Login = ({ show, onHide, setIsLogin }) => {
   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
@@ -40,11 +41,10 @@ export const Login = ({ show, onHide, setIsLogin }) => {
     <Modal
       show = {show}
       onHide = {onHide}
-      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-    <Container>
+    <Container id="top-modal-wrap">
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           로그인
@@ -65,10 +65,8 @@ export const Login = ({ show, onHide, setIsLogin }) => {
         <div id="welcome-message"></div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="button" onClick={onSubmitHandler}>
-          완료
-        </Button>
-        <Button onClick={onHide}>취소</Button>
+        <button className="modal-btn" type="button" onClick={onSubmitHandler}>완료</button>
+        <button className="modal-btn" onClick={onHide}>취소</button>
       </Modal.Footer>
     </Container>
     </Modal>

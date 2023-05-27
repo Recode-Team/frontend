@@ -65,7 +65,20 @@ body {
     color: #343A40;
 }
 
-.nav-button {
+.nav-button-left {
+    background-color: initial;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #838383;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    font-size: 1.25rem;
+    margin-left: 1.25rem;
+    padding: 0.5rem;
+    transition: .3s ease;
+}
+
+.nav-button-right {
     background-color: initial;
     border: none;
     border-bottom: 3px solid transparent;
@@ -78,7 +91,7 @@ body {
     transition: .3s ease;
 }
 
-.nav-button:hover {
+.nav-button-left:hover, .nav-button-right:hover {
     border-bottom: 3px solid #FF6162;
     color: #838383;
 }

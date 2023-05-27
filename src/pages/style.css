@@ -1,6 +1,12 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-style: normal;
+}
+
 html,
 body {
-    font-family: Gmarket;
+    font-family: 'Pretendard';
     height: 100%;
     margin: 0;
     padding: 0;
@@ -12,12 +18,6 @@ body {
     margin: 0;
     padding: 0;
     text-decoration: none;
-}
-
-@font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-style: normal;
 }
 
 body::-webkit-scrollbar {
@@ -34,6 +34,8 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
     background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
 }
+
+/* main */
 
 .body-container {
     box-sizing: border-box;
@@ -159,4 +161,144 @@ body::-webkit-scrollbar-track {
     opacity: .4;
     position: absolute;
     width: 100%;
+}
+
+/* Group */
+
+.responsive-wrapper {
+    width: 90%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.group-header {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.group-header-txt {
+    font-family: 'Pretendard';
+    font-weight: 500;
+}
+
+.group-header .create-btn {
+    align-items: center;
+    background-color: #ff965e;
+    border: 2px solid #ff965e;
+    border-radius: 30px;
+    bottom: 37%;
+    color: #fbfbfb;
+    display: flex;
+    font-family: 'Pretendard';
+    font-size: 1.3rem;
+    font-weight: 300;
+    justify-content: center;
+    left: 16%;
+    opacity: 80%;
+    padding: 0.2rem 1.5rem;
+    transition: .3s ease;
+    z-index: 100;
+}
+
+.group-header .create-btn:hover {
+    background-color: #fbfbfb;
+    color: #ff965e;
+}
+
+.content-main {
+	padding-top: 2rem;
+	padding-bottom: 6rem;
+	flex-grow: 1;
+}
+
+.card-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	column-gap: 1.5rem;
+	row-gap: 1.5rem;
+	@media (min-width: 600px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (min-width: 1200px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.card {
+	background-color: var(--c-background-primary);
+	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.05);
+	border-radius: 8px;
+    border: none;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.card-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 1.5rem 1.25rem 1rem 1.25rem;
+    background-color: #ffffff;
+    border: none;
+}
+
+.card-header .card-header-1 {
+    align-items: center;
+    display: flex;
+}
+
+.card-header .card-header-1 .card-header-2 {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+}
+
+.card-header .card-header-1 .card-header-2 .card-header-3 {
+    width: 40px;
+}
+
+.card-header-4 {
+    background-color: initial;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0 8px;
+}
+
+.card-body {
+	padding: 1rem 1.25rem;
+	font-size: 0.875rem;
+}
+
+.card-body-txt {
+    font-family: 'Pretendard';
+    font-weight: 200;
+}
+
+.card-footer {
+	margin-top: auto;
+	padding: 1rem 1.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+    background-color: #ffffff;
+	border-top: 1px solid #eff1f6;
+    font-family: 'Pretendard';
+    font-weight: 200;
+    color: #747474
+}
+
+.card-footer .a {
+    color: #404089;
+    text-decoration: none;
 }
