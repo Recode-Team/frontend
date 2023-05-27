@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SignUp from '../modals/SignUp';
 import Login from '../modals/Login';
 import "./styles.css";
@@ -9,6 +9,9 @@ const Header = () => {
   const [signUpOn, setSignUpOn] = useState(false);
   const [loginOn, setLoginOn] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const location = useLocation();
+  const isMainPage = location.pathname === '/';
+
   const navigate = useNavigate();
   const goToGroup = () => {
     navigate('/group');
@@ -23,7 +26,7 @@ const Header = () => {
     <SignUp show={signUpOn} onHide={() => setSignUpOn(false)} />
     <Login show={loginOn} onHide={() => setLoginOn(false)} setIsLogin={setIsLogin}/>
     
-    <div className="header">
+    <div className="header" style={{ position: isMainPage ? 'fixed' : 'sticky' }}>
             <div className="head-title">              
               <div className="title-container">
                   <a href="/"><p className="logo-txt">Flow Meet</p></a>
