@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Modal, Form, Container } from 'react-bootstrap';
+import Login from './Login';
 import './sign_style.css';
 
-export const SignUp = ({ show, onHide }) => {
+export const SignUp = ({ show, onHide, setShowSignUp }) => {
   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
 
   const [email, setEmail] = useState("");
@@ -19,6 +20,7 @@ export const SignUp = ({ show, onHide }) => {
   const [isName, setIsName] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   const onEmailHandler = (e) => {
     const inputEmail = e.target.value;
@@ -83,54 +85,71 @@ export const SignUp = ({ show, onHide }) => {
     })
       .then((response) => response.json())
       .then((result) => console.log("results: ", result))
+      setShowSignUp(false)
       .catch(error => console.error(error));
-}
+  }
+
+  const showLoginModal = () => {
+    onHide();
+    setShowLogin(true);
+  };
+
+  const hideLoginModal = () => {
+    setShowLogin(false);
+  };
 
   return (
-    <Modal
-      show = {show}
-      onHide = {onHide}
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-    <Container id="top-modal-wrap">
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          회원가입
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form>
-          <Form.Group className="mb-3">
-            <Form.Label></Form.Label>
-            <Form.Control type="email" placeholder="이메일" value={email} onChange={onEmailHandler}/>
-            <p className="msg" align="right">{emailMsg}</p>
-          </Form.Group>
+    <>
+      <Modal
+        show = {show}
+        onHide = {onHide}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+      <Container id="top-modal-wrap">
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            회원가입
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label></Form.Label>
+              <Form.Control type="email" placeholder="이메일" value={email} onChange={onEmailHandler}/>
+              <p className="msg" align="right">{emailMsg}</p>
+            </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label></Form.Label>
-            <Form.Control placeholder="닉네임" value={name} onChange={onNameHandler}/>
-            <p className="msg" align="right">{nameMsg}</p>
-          </Form.Group>
-          
-          <Form.Group className="mb-3">
-            <Form.Label></Form.Label>
-            <Form.Control type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler}/>
-            <p className="msg" align="right">{passwordMsg}</p>
-          </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label></Form.Label>
+              <Form.Control placeholder="닉네임" value={name} onChange={onNameHandler}/>
+              <p className="msg" align="right">{nameMsg}</p>
+            </Form.Group>
+            
+            <Form.Group className="mb-3">
+              <Form.Label></Form.Label>
+              <Form.Control type="password" placeholder="비밀번호" value={password} onChange={onPasswordHandler}/>
+              <p className="msg" align="right">{passwordMsg}</p>
+            </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label></Form.Label>
-            <Form.Control type="password" placeholder="비밀번호 확인" value={passwordConfirm} onChange={onPasswordConfirm} />
-            <p className="msg" align="right">{passwordConfirmMsg}</p>
-          </Form.Group>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <button className="modal-btn" disabled={!isEmail || !isName || !isPassword || !isPasswordConfirm} onClick={onSubmitHandler}>완료</button>
-      </Modal.Footer>
-    </Container>
-    </Modal>
+            <Form.Group className="mb-3">
+              <Form.Label></Form.Label>
+              <Form.Control type="password" placeholder="비밀번호 확인" value={passwordConfirm} onChange={onPasswordConfirm} />
+              <p className="msg" align="right">{passwordConfirmMsg}</p>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="modal-btn-move" onClick={showLoginModal}>로그인</button>
+          <button className="modal-btn" disabled={!isEmail || !isName || !isPassword || !isPasswordConfirm} onClick={onSubmitHandler}>완료</button>
+        </Modal.Footer>
+      </Container>
+      </Modal>
+
+      {showLogin && (
+        <Login show={showLogin} onHide={hideLoginModal} />
+      )}
+    </>
   )
 }
 
