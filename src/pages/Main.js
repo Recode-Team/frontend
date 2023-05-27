@@ -1,13 +1,25 @@
 import React from 'react'
-import { Container } from "react-bootstrap";
-import mainImage from './mainImage.png';
+import "./style.css";
 
 function Main() {
   return (
-    // <Container style={{ minHeight: "75vh" }}>
-    //   <img src={mainImage} alt="main" style={{ maxWidth: "100%", height: "auto" }}/>
-    // </Container>
-    <img src={mainImage} alt="main" style={{ maxWidth: "100%", height: "auto" }}/>
+    <div className="body-container">
+      <section className="first-section">
+        <div className="main-title">
+          <h1 className="title-line">시작부터 끝까지</h1>
+          <h1 className="title-line">Flow Meet과 함께</h1>
+        </div>
+        <button className="start-btn">시작하기</button>
+        <div className="wave-box">
+          <div className="wave -one"></div>
+          <div className="wave -two"></div>
+          <div className="wave -three"></div>
+        </div>
+      </section>
+      <section className="second-section">
+        <div className="second-bg"></div>
+      </section>
+    </div>    
   )
 }
 

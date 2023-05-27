@@ -1,7 +1,7 @@
 import { Tldraw, useFileSystem } from "@tldraw/tldraw";
 import { useUsers } from "y-presence";
 import { useMultiplayerState } from "./hooks/useMultiplayerState";
-import "./styles.css";
+import "./board.css";
 import { awareness, roomID } from "./store";
 
 function Editor({ roomId }: { roomId: string }) {

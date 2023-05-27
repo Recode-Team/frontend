@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Nav, Navbar, Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import SignUp from '../modals/SignUp';
 import Login from '../modals/Login';
+import "./styles.css";
+import logoimg from './whale.png';
 
 const Header = () => {
   const [signUpOn, setSignUpOn] = useState(false);
@@ -16,48 +17,31 @@ const Header = () => {
     setIsLogin(false);
     navigate('/');
   }
-  
+
   return (
     <>
     <SignUp show={signUpOn} onHide={() => setSignUpOn(false)} />
     <Login show={loginOn} onHide={() => setLoginOn(false)} setIsLogin={setIsLogin}/>
-    <header>
-        <Navbar bg="light" expand="lg">
-            <Container>
-                <Navbar.Brand>OUR BOARD</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse class="nav navbar-nav navbar-right" id="basic-navbar-nav" >
-                    <Nav className="me-auto">
-                    {isLogin ? ( // 로그인 상태에 따라 분기처리
-                    <>
-                        <Nav.Link>
-                            <Button variant="btn btn-outline-primary" onClick={() => goToGroup(true)}>Group</Button>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <Button variant="btn btn-outline-primary" onClick={handleLogout}>
-                                로그아웃
-                            </Button>
-                        </Nav.Link>
-                    </>
-                    ) : (
-                    <>
-                        <Nav.Link>
-                            <Button class="btn btn-outline-primary" onClick={() => setLoginOn(true)}>
-                                로그인
-                            </Button>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <Button class="btn btn-outline-primary" onClick={() => setSignUpOn(true)}>
-                                회원가입
-                            </Button>
-                        </Nav.Link>
-                    </>
-                )}
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-    </header>
+    
+    <div className="header">
+            <div className="head-title">              
+              <div className="title-container">
+                  <a href="/"><p className="logo-txt">Flow Meet</p></a>
+              </div>
+              <div><img src={logoimg} alt="logo" className="logo-img"></img></div>
+            </div>
+            {isLogin ? ( // 로그인 상태에 따라 분기 처리
+                <div className="navbar">
+                    <button type="button" className="nav-button" onClick={() => goToGroup(true)}>Project</button>
+                    <button type="button" className="nav-button" onClick={() => handleLogout}>Logout</button>
+                </div>
+            ) : (
+                <div className="navbar">
+                    <button type="button" className="nav-button" onClick={() => setLoginOn(true)}>Login</button>
+                    <button type="button" className="nav-button" onClick={() => setSignUpOn(true)}>Signup</button>
+            </div>
+            )}
+        </div>
     </>
   )
 };
