@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-style: normal;
+}
+
+#top-modal-wrap {
+
+    font-family: 'Pretendard';
+
+    .msg {
+        font-family: 'Pretendard';
+        font-weight: 100;
+    }
+    
+    .modal-btn {
+        align-items: center;
+        background-color: #ff7e5e;
+        border: 2px solid #ff7e5e;
+        border-radius: 30px;
+        bottom: 37%;
+        color: #fbfbfb;
+        display: flex;
+        font-family: 'Pretendard';
+        font-weight: 300;
+        justify-content: center;
+        left: 16%;
+        opacity: 80%;
+        padding: 0.13rem 1.5rem;
+        transition: .3s ease;
+        z-index: 100;
+    }
+
+    .modal-btn:hover {
+        background-color: #fbfbfb;
+        color: #ff965e;
+    }
+}
