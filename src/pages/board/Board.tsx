@@ -3,6 +3,7 @@ import { useUsers } from "y-presence";
 import { useMultiplayerState } from "./hooks/useMultiplayerState";
 import "./board.css";
 import { awareness, roomID } from "./store";
+import Recording from "../Video/Recording";
 
 function Editor({ roomId }: { roomId: string }) {
   const fileSystemEvents = useFileSystem();
@@ -27,6 +28,7 @@ function Info() {
     <div className="absolute p-md">
       <div className="flex space-between">
         <span>members: {users.size}</span>
+        <div><Recording /></div>
       </div>
     </div>
   );

@@ -1,0 +1,39 @@
+/* 버튼 css */
+.record-button,
+.stop-button,
+.download-button {
+    width: 160px;
+    height: 35px;
+    /* position: relative; */
+    border-radius: 10px;
+    font-family: 'Dokdo';
+    font-size: 16px;
+    background: linear-gradient(to right, #FF4E50, #F9D423);
+    color: white;
+    font-weight: 600;
+    transition: 0.25s;
+    /* text-align: center; */
+    border: none;
+    margin: 0 0 0 0;
+    float: right;
+}
+
+.record-button.recording,
+.download-button:hover,
+.stop-button:hover,
+.record-button:hover {
+transform: scale(1.1);
+}
+
+.preview-video{
+    height: 1px;
+    width: 1px;
+    display: none;
+}
+
+.video-main{
+    height: auto;
+    width: 100px;
+    transform: all .355;
+}
+
