@@ -10,11 +10,11 @@
   box-sizing: border-box;
 }
 
-.header {
+.minutes-header {
   margin-bottom: 20px;
 }
 
-.header h2 {
+.minutes-header h2 {
   font-size: 24px;
   color: #880e4f;
 }

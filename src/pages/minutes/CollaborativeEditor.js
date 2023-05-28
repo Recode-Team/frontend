@@ -116,7 +116,7 @@ const CollaborationComponent = () => {
 
   return (
     <div className="collabo-container">
-      <div className="header">
+      <div className="minutes-head">
         <h2>{title}</h2>
       </div>
       <div className="editor-container">
