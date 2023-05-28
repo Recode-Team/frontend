@@ -7,6 +7,9 @@ import Main from './pages/Main';
 import Group from './pages/Group';
 import BoardList from './pages/BoardList';
 import Board from './pages/board/Board';
+import MinutesList from './pages/minutes/MinutesList';
+import MinutesDetails from './pages/minutes/MinutesDetails';
+import CollaborationComponent from './pages/minutes/CollaborativeEditor';
 
 const rootElement = document.getElementById("root");
 render(<Board />, rootElement);
@@ -21,6 +24,11 @@ function App() {
           <Route path="/group" element={<Group />} />
           <Route path="/boardlist" element={<BoardList />} />
           <Route path="/board" element={<Board />} />
+
+          <Route path="/meeting" element={<MinutesList />} />
+          <Route path="/meeting/:id" element={<MinutesDetails />} />
+          <Route path="/meeting/:id/edit" element={<CollaborationComponent />} />
+
         </Routes>
         <Footer />
       </div>
