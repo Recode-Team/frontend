@@ -72,21 +72,21 @@ const Recording = () => {
     setRecording(false);
   };
 
-  const handleDownloadClick = () => {
-    if (recording) {
-      alert('녹화를 먼저 중지해주세요.');
-    } else {
-      handleStop();
-    }
-  };
+  // const handleDownloadClick = () => {
+  //   if (recording) {
+  //     alert('녹화를 먼저 중지해주세요.');
+  //   } else {
+  //     handleStop();
+  //   }
+  // };
 
   return (
     <>
       <div className='button'>
         {recording ? (
-          <button className="stop-button" onClick={stopRecording}>STOP RECORDING</button>
+          <button className="stop-button" onClick={stopRecording}>녹음 종료</button>
         ) : (
-          <button className="record-button" onClick={videoStart}>RECORDING START</button>
+          <button className="record-button" onClick={videoStart}>녹음 시작</button>
         )}
       </div>
       <div className="video-container">

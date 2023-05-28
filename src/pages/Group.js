@@ -28,7 +28,7 @@ const Group = () => {
                                     <p className="card-body-txt">컴퓨터공학과 졸업작품</p>
                                 </div>
                                 <div className="card-footer">
-                                    <a href="/boardlist">View Board</a>
+                                    <a href="/boardlist">Enter the Group</a>
                                 </div>
                             </article>
                         {groups.map((group, index) => (
@@ -43,7 +43,7 @@ const Group = () => {
                                     <p className="card-body-txt">{group.info}</p>
                                 </div>
                                 <div className="card-footer">
-                                    <a href="/boardlist">View Board</a>
+                                    <a href="/boardlist">Enter the group</a>
                                 </div>
                             </article>
                         ))}

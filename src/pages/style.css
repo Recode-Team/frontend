@@ -4,13 +4,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'LeferiPoint-BlackA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 html,
 body {
     font-family: 'Pretendard';
@@ -333,6 +326,8 @@ body::-webkit-scrollbar-track {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+    /* width: 410px;
+    height: 208px */
 }
 
 .card-header {

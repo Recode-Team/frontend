@@ -17,14 +17,14 @@
     align-items: baseline;
   }
   
-  .bulletin-title {
+  /* .bulletin-title {
     margin: 0;
     width: 70%;
     overflow: hidden;  		
     text-overflow: ellipsis;  	
     white-space: nowrap; 		
     word-break:break-all;
-  }
+  } */
   
   .bulletin-link {
     text-decoration: none;
@@ -48,3 +48,10 @@
     margin-top: 10px;
   }
   
+  .minutes-header {
+    margin-top: 4rem;
+    /* display: flex; */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
