@@ -16,6 +16,9 @@
 .env.production.local
 .env.local
 
+recode.crt
+recode.key
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

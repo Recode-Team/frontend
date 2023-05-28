@@ -50,7 +50,7 @@ export const CreateBoard = ({ show, onHide, setGroups }) => {
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
             {/* <Form.Control type="password" placeholder="그룹 설명" value={password} onChange={onPasswordHandler}/> */}
-            <Form.Control type="groupinfo" placeholder="그룹 설명" value={groupInfo} onChange={ongInfoHandler} />
+            <Form.Control type="groupinfo" placeholder="보드 설명" value={groupInfo} onChange={ongInfoHandler} />
           </Form.Group>
         </Form>
         <div id="welcome-message"></div>
