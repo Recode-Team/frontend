@@ -36,16 +36,6 @@ const Recording = () => {
 
   const handleStop = async () => {
     const blob = new Blob(recordedChunksRef.current, { type: 'audio/mp3' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = `recording_${new Date()}.mp3`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  
     const formData = new FormData();
     formData.append('audioFile', blob);
     formData.append('encoding', 'MP3');
@@ -75,45 +65,7 @@ const Recording = () => {
       console.error('오디오 파일 업로드 중 오류가 발생했습니다:', error);
     }
   };
-
-  // const handleStop = async () => {
-    
-  //   const blob = new Blob(recordedChunksRef.current, { type: 'audio/mp3' });
-  //   const url = URL.createObjectURL(blob);
-  //   const a = document.createElement('a');
-  //   a.style.display = 'none';
-  //   a.href = url;
-  //   a.download = `recording_${new Date()}.mp3`;
-  //   document.body.appendChild(a);
-  //   a.click();
-  //   document.body.removeChild(a);
-  //   URL.revokeObjectURL(url);
-
-  //   const formData = new FormData();
-  //   formData.append('audioFile', blob);
-  //   formData.append('encoding', 'MP3');
-
-  //   try {
-  //     const response = await fetch(`${ipAddress}/api/gpt/minutes/create`, {
-  //       method: 'POST',
-  //       body: formData,
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       const regex = /[ㄱ-ㅎㅏ-ㅣ가-힣\s]+/g;
-  //       const transcription = data.transcription.match(regex).join('');
-  //       const summary = data.summary.match(regex).join('');
-
-  //       setMinutes({ transcription, summary });
-  //     } else {
-  //       console.error('오디오 파일 업로드 요청이 실패했습니다.');
-  //     }
-  //   } catch (error) {
-  //     console.error('오디오 파일 업로드 중 오류가 발생했습니다:', error);
-  //   }
-  // };
-
+  
   const stopRecording = () => {
     previewPlayerRef.current.srcObject.getTracks().forEach(track => track.stop());
     mediaRecorderRef.current.stop();
