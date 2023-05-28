@@ -5,7 +5,6 @@ import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import Main from './pages/Main';
 import Group from './pages/Group';
-import BoardList from './pages/BoardList';
 import Board from './pages/board/Board';
 
 const rootElement = document.getElementById("root");
@@ -19,7 +18,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/group" element={<Group />} />
-          <Route path="/boardlist" element={<BoardList />} />
           <Route path="/board" element={<Board />} />
         </Routes>
         <Footer />
