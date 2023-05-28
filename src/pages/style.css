@@ -67,8 +67,8 @@ body::-webkit-scrollbar-track {
 
 .first-section .main-title .title-line {
     font-family: 'Pretendard';
-    font-weight: 900;
-    font-size: 3rem;
+    font-weight: 600;
+    font-size: 3.5rem;
     padding-bottom: 0.5rem;
 }
 
@@ -95,6 +95,24 @@ body::-webkit-scrollbar-track {
 .first-section .start-btn:hover {
     background-color: #fbfbfb;
     color: #FF6162;
+}
+
+.first-section .fly {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    left: 20%;
+}
+
+.first-section .fly .girl {
+    animation: motion 0.5s linear 0s infinite alternate;
+    margin-top: 0;
+    height: 600px;
+}
+
+@keyframes motion {
+	0% {margin-top: 0px;}
+	100% {margin-top: 10px;}
 }
 
 .first-section .wave-box {

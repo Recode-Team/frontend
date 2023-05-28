@@ -1,4 +1,5 @@
 import React from 'react'
+import girl from './icon/girl.png';
 import "./style.css";
 
 function Main() {
@@ -10,6 +11,9 @@ function Main() {
           <h1 className="title-line">Flow Meet과 함께</h1>
         </div>
         <button className="start-btn">시작하기</button>
+        <div className="fly">
+          <img src={girl} className="girl" alt=""></img>
+        </div>
         <div className="wave-box">
           <div className="wave -one"></div>
           <div className="wave -two"></div>

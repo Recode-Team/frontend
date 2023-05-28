@@ -26,8 +26,7 @@ function Info() {
   return (
     <div className="absolute p-md">
       <div className="flex space-between">
-        <span>Number of connected users: {users.size}</span>
-        <button>좋아요</button>
+        <span>members: {users.size}</span>
       </div>
     </div>
   );
