@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import postit from '../icon/postit.png';
 import './MinutesList.css';
+import '../style.css'
 
 function MinutesList() {
   const [meetingMinutes, setMeetingMinutes] = useState([]);
@@ -15,30 +17,40 @@ function MinutesList() {
   }, []);
 
   return (
-    <div className="meeting-list-container">
-      <h1>Minutes List</h1>
-      <div className="bulletin-board">
-        {meetingMinutes.length > 0 ? (
-          meetingMinutes.map((meeting, index) => (
-            <React.Fragment key={meeting.id}>
-              <div className="bulletin">
-                <div className="bulletin-header">
-                  <h2 className="bulletin-title">
-                    <Link to={`/meeting/${meeting.id}`} className="bulletin-link">
-                      {meeting.title}
-                    </Link>
-                  </h2>
-                  <span className="bulletin-date">{meeting.createdAt}</span>
-                </div>
-              </div>
-              {index !== meetingMinutes.length - 1 && <hr className="bulletin-divider" />}
-            </React.Fragment>
-          ))
-        ) : (
-          <p>No meeting minutes available</p>
-        )}
+    <>
+    <div className="responsive-wrapper">
+      <div className="minutes-header">
+        <h1 className="group-header-txt">Minutes List</h1>
+        <div className="content-main">
+          <div className="card-grid">
+              {meetingMinutes.length > 0 ? (
+                meetingMinutes.map((meeting, index) => (
+                  <article className="card">
+                    <React.Fragment key={meeting.id}>
+                    <div className="bulletin-title card-header">
+                      <div className="card-header-1">
+                        <span className="card-header-2"><img className="card-header-3" alt="" src={postit}></img></span>
+                        <span className="card-header-4">{meeting.title.length > 14 ? meeting.title.slice(0, 15) + '...' : meeting.title}</span>
+                      </div>
+                    </div>
+                    <div className="card-body">
+                      <p className="card-body-txt">DATE {meeting.createdAt.slice(0, 10)} / TIME {meeting.createdAt.slice(11, 19)}</p>
+                    </div>
+                    <div className="card-footer">
+                      <Link to={`/minutes/${meeting.id}`}>View Minutes</Link>
+                    </div>
+                    {/* {index !== meetingMinutes.length - 1 && <hr className="bulletin-divider" />} */}
+                    </React.Fragment>
+                  </article>
+                  ))
+                ) : (
+                <p>No meeting minutes available</p>
+              )}
+          </div>
+        </div>
       </div>
     </div>
+  </>
   );
 }
 

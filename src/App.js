@@ -8,8 +8,8 @@ import Group from './pages/Group';
 import BoardList from './pages/BoardList';
 import Board from './pages/board/Board';
 import MinutesList from './pages/minutes/MinutesList';
-import MinutesDetails from './pages/minutes/MinutesDetails';
-import CollaborationComponent from './pages/minutes/CollaborativeEditor';
+import MinutesDetails from './pages/minutes/detail/MinutesDetails';
+import CollaborationComponent from './pages/minutes/edit/CollaborativeEditor';
 
 const rootElement = document.getElementById("root");
 render(<Board />, rootElement);
@@ -25,9 +25,9 @@ function App() {
           <Route path="/boardlist" element={<BoardList />} />
           <Route path="/board" element={<Board />} />
 
-          <Route path="/meeting" element={<MinutesList />} />
-          <Route path="/meeting/:id" element={<MinutesDetails />} />
-          <Route path="/meeting/:id/edit" element={<CollaborationComponent />} />
+          <Route path="/minutes" element={<MinutesList />} />
+          <Route path="/minutes/:id" element={<MinutesDetails />} />
+          <Route path="/minutes/:id/edit" element={<CollaborationComponent />} />
 
         </Routes>
         <Footer />

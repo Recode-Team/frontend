@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import * as Y from 'yjs';
 import { WebsocketProvider } from 'y-websocket';
 import './CollaborativeEditor.css';
+import '../../style.css';
 
 const CollaborationComponent = () => {
   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
@@ -115,25 +116,34 @@ const CollaborationComponent = () => {
   }, []);
 
   return (
-    <div className="collabo-container">
-      <div className="minutes-head">
-        <h2>{title}</h2>
+    <div className="responsive-wrapper minutes-wrap">
+      {/* 에디터 */}
+      <div className="minutes-editor">
+        <div className="editor-header">
+          <div className="circle-btn">
+            <div className="red-c"></div>
+            <div className="yellow-c"></div>
+            <div className="green-c"></div>
+          </div>
+        </div>
+        <div className="editor-title">
+          <p className="editor-title-txt">{title}</p>
+        </div>
+        <div className="editor-container">
+          <div className="editor-content">
+          <textarea
+            className="editor-text"
+            value={text}
+            onChange={handleSetText}
+            style={{ height: 400 }}
+          />
+          </div>
+        </div>
       </div>
-      <div className="editor-container">
-        <textarea
-          className="editor"
-          value={text}
-          onChange={handleSetText}
-          style={{ height: editorHeight }}
-        />
-      </div>
+      {/* 버튼 */}
       <div className="footer">
-        <button className="save-button" onClick={handleSave}>
-          Save
-        </button>
-        <button className="go-back-button" onClick={handleGoBack}>
-          Go Back
-        </button>
+        <button className="save-button" onClick={handleSave}>저장하기</button>
+        <button className="go-back-button" onClick={handleGoBack}>뒤로가기</button>
       </div>
     </div>
   );
