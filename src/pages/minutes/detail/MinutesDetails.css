@@ -5,16 +5,16 @@
 }
 
 .minutes-wrap {
-  margin-top: 5rem;
+  margin-top: 3.5rem;
 }
 
-.editor-container {
+.detail-container {
   flex-grow: 1;
   display: flex; /* 추가: 가로 크기 조절을 위해 flex 설정 */
   flex-direction: column; /* 추가: 세로 크기 조절을 위해 column 설정 */
 }
 
-.editor {
+.detail {
   flex-grow: 1; /* 추가: 가로 크기 조절을 위해 flex-grow 설정 */
   width: 100%;
   height: 100%;
@@ -65,7 +65,7 @@
   border-color: #e2e8f0;
 }
 
-.responsive-wrapper .minutes-editor {
+.responsive-wrapper .minutes-detail {
   box-shadow: 0 0 0 1px rgba(0,0,0,.05);
   position: relative;
   overflow: hidden;
@@ -73,7 +73,7 @@
   border-radius: 0.5rem;
 }
 
-.responsive-wrapper .minutes-editor .editor-header {
+.responsive-wrapper .minutes-detail .detail-header {
   padding-left: 1rem;
   padding-right: 1rem;
   height: 2.5rem;
@@ -89,12 +89,12 @@
   background-color: rgba(255,255,255,var(--bg-opacity));
 }
 
-.responsive-wrapper .minutes-editor .editor-header .circle-btn {
+.responsive-wrapper .minutes-detail .detail-header .circle-btn {
   align-items: center;
   display: flex;
 }
 
-.responsive-wrapper .minutes-editor .editor-header .circle-btn .red-c {
+.responsive-wrapper .minutes-detail .detail-header .circle-btn .red-c {
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 9999px;
@@ -103,7 +103,7 @@
   background-color: rgba(245,101,101,var(--bg-opacity));
 }
 
-.responsive-wrapper .minutes-editor .editor-header .circle-btn .yellow-c {
+.responsive-wrapper .minutes-detail .detail-header .circle-btn .yellow-c {
   --space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--space-x-reverse)));
@@ -115,7 +115,7 @@
   background-color: rgba(246,224,94,var(--bg-opacity));
 }
 
-.responsive-wrapper .minutes-editor .editor-header .circle-btn .green-c {
+.responsive-wrapper .minutes-detail .detail-header .circle-btn .green-c {
   --space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--space-x-reverse)));
@@ -127,7 +127,7 @@
   background-color: rgba(72,187,120,var(--bg-opacity));
 }
 
-.minutes-editor .editor-header {
+.minutes-detail .detail-header {
   padding-left: 1rem;
   padding-right: 1rem;
   display: flex;
@@ -140,21 +140,22 @@
   background-color: rgba(255,255,255,var(--bg-opacity));
 }
 
-.editor-title {
+.detail-title {
   margin: 10px 0px 10px 1.5rem;
 }
 
-.editor-title-txt {
+.detail-title-txt {
   font-family: 'Pretendard' !important;
   font-weight: 600;
   font-size: 24px;
   margin: 0;
 }
 
-.editor-container .editor-content .editor-text {
+.detail-container .detail-content .detail-text {
   padding: 1.5rem;
   /* min-height: 100vh; */
   width: 100%;
+  height: 600px;
   font-size: 20px;
   display: block;
   overflow-x: auto;
@@ -164,7 +165,7 @@
   margin: 0;
 }
 
-.editor-container .editor-content:focus {
+.detail-container .detail-content:focus {
   outline: none;
 }
 
