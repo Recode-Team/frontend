@@ -131,7 +131,7 @@ body::-webkit-scrollbar-track {
 }
 
 .compass {
-    animation: motion 0.6s linear 0s infinite alternate;
+    animation: motion 0.5s linear 0s infinite alternate;
     top: 15rem;
     left: -9rem;
     margin: 0;

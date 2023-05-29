@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import breaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
+import MDEditor from '@uiw/react-md-editor';
 import './MinutesDetails.css';
 // import './CollaborativeEditor.css';
 import '../../style.css';
+
+function MarkdownComponent({ markdownText }) {
+  return (
+    <ReactMarkdown plugins={[breaks]}>{markdownText}</ReactMarkdown>
+  );
+}
 
 function MinutesDetails() {
   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
@@ -32,25 +41,23 @@ function MinutesDetails() {
     <>
     {meeting ? (
       <div className="responsive-wrapper minutes-wrap">
-      <div className="minutes-editor">
-        <div className="editor-header">
+      <div className="minutes-detail">
+        <div className="detail-header">
           <div className="circle-btn">
             <div className="red-c"></div>
             <div className="yellow-c"></div>
             <div className="green-c"></div>
           </div>
         </div>
-        <div className="editor-title">
-            <p className="editor-title-txt">{meeting.title}</p>
+        <div className="detail-title">
+            <p className="detail-title-txt">{meeting.title}</p>
           </div>
-          <div className="editor-container">
-            <div className="editor-content">
-              <textarea disabled
-              className="editor-text"
-              value={meeting.summary}
-              style={{ height: 400 }}
+          <div className="detail-container">
+            <div className="detail-content">
+              <MDEditor.Markdown className="detail-text"
+		            style={{ padding: 10 }}
+                source={meeting.summary}
               />
-              {/* <ReactMarkdown className="editor-text">{meeting.summary}</ReactMarkdown> */}
             </div>
           </div>
       </div>

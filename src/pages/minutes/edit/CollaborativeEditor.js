@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import * as Y from 'yjs';
 import { WebsocketProvider } from 'y-websocket';
+import MDEditor from '@uiw/react-md-editor';
 import './CollaborativeEditor.css';
 import '../../style.css';
 
@@ -75,8 +76,7 @@ const CollaborationComponent = () => {
     };
   }, [id]);
 
-  const handleSetText = useCallback((event) => {
-    const updatedText = event.target.value;
+  const handleSetText = useCallback((updatedText) => {
     setText(updatedText);
     ytextRef.current.delete(0, ytextRef.current.length);
     ytextRef.current.insert(0, updatedText);
@@ -130,14 +130,24 @@ const CollaborationComponent = () => {
           <p className="editor-title-txt">{title}</p>
         </div>
         <div className="editor-container">
-          <div className="editor-content">
-          <textarea
-            className="editor-text"
+          <div id="editor-content">
+            {/* <textarea
+              className="editor-text"
+              value={text}
+              onChange={handleSetText}
+            /> */}
+            {/* <MDEditor
+              className="editor-text"
+              height={600}
+              value={text}
+              onChange={handleSetText}
+            /> */}
+          </div>
+          <MDEditor className="editor-part"
+            height={600}
             value={text}
             onChange={handleSetText}
-            style={{ height: 400 }}
           />
-          </div>
         </div>
       </div>
       {/* 버튼 */}
