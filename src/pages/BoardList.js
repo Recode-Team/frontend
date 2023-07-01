@@ -17,6 +17,20 @@ const Group = () => {
                 </div>
                 <div className="content-main">
                     <div className="card-grid">
+                        <article className="card">
+                            <div className="card-header">
+                                <div className="card-header-1">
+                                    <span className="card-header-2"><img className="card-header-3" alt="" src={pencil} /></span>
+                                    <p className="card-header-4">발표 준비</p>
+                                </div>
+                            </div>
+                            <div className="card-body">
+                                <p className="card-body-txt">5/30 발표를 위한 화이트보드</p>
+                            </div>
+                            <div className="card-footer">
+                                <a href="/board">View Board</a>
+                            </div>
+                        </article>
                         {groups.map((group, index) => (
                             <article className="card">
                             <div className="card-header">

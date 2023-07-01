@@ -141,7 +141,7 @@
 }
 
 .minutes-editor .editor-title {
-  margin: 10px 0px 10px 1.5rem;
+  margin: 10px 0px 5px 1.5rem;
 }
 
 .minutes-editor .editor-title-txt {
@@ -149,6 +149,11 @@
   font-weight: 600;
   font-size: 24px;
   margin: 0;
+  width: 100%;
+}
+
+.minutes-editor .editor-title-txt:focus {
+  outline: none;
 }
 
 .editor-container .editor-text {

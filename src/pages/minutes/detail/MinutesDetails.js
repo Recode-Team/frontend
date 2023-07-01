@@ -27,7 +27,7 @@ function MinutesDetails() {
       .then((response) => response.json())
       .then((data) => setMeeting(data.results.minutes))
       .catch((error) => console.error('Failed to fetch meeting details:', error));
-  }, [id]);
+  }, [id, ipAddress]);
 
   const handleEditClick = () => {
     navigate(`/minutes/${id}/edit`);

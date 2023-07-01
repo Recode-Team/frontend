@@ -14,7 +14,7 @@ function MinutesList() {
       .then((response) => response.json())
       .then((data) => setMeetingMinutes(data.results.minutes))
       .catch((error) => console.error('Failed to fetch meeting minutes:', error));
-  }, []);
+  }, [ipAddress]);
 
   return (
     <>
