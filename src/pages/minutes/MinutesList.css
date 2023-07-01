@@ -1,0 +1,57 @@
+.meeting-list-container {
+    margin: 20px;
+  }
+  
+  .bulletin-board {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .bulletin {
+    margin-bottom: 10px;
+  }
+  
+  .bulletin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  
+  /* .bulletin-title {
+    margin: 0;
+    width: 70%;
+    overflow: hidden;  		
+    text-overflow: ellipsis;  	
+    white-space: nowrap; 		
+    word-break:break-all;
+  } */
+  
+  .bulletin-link {
+    text-decoration: none;
+    font-size: 0.8em;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .bulletin-link:hover {
+    color: #555;
+  }
+  
+  .bulletin-date {
+    font-size: 0.8em;
+    color: #888;
+  }
+  
+  .bulletin-divider {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+  }
+  
+  .minutes-header {
+    margin-top: 4rem;
+    /* display: flex; */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
