@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form, Container } from 'react-bootstrap';
 import SignUp from './SignUp';
 import './sign_style.css';
@@ -9,6 +9,7 @@ export const Login = ({ show, onHide, setIsLogin, setShowLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showSignUp, setShowSignUp] = useState(false);
+  const [token, setToken] = useState(""); // JWT 토큰 상태 추가
 
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value);
@@ -31,10 +32,12 @@ export const Login = ({ show, onHide, setIsLogin, setShowLogin }) => {
     })
       .then((response) => response.json())
       .then((result) => {
+        if (result.results.token) {
+          localStorage.setItem('token', result.results.token);
+        }
         console.log("result: ", result);
         setIsLogin(true);
-        const welcomeMessage = document.getElementById('welcome-message');
-        welcomeMessage.textContent = `환영합니다 ${result.results.name}님!`;
+        setToken(result.results.token);
         onHide();
       })
       .catch(error => console.error(error));
@@ -48,6 +51,13 @@ export const Login = ({ show, onHide, setIsLogin, setShowLogin }) => {
   const hideSignUpModal = () => {
     setShowSignUp(false);
   };
+
+  // useEffect(() => {
+  //   if (token) {
+  //     alert("Token 값: " + token);
+  //     console.log(token)
+  //   }
+  // }, [token]);
 
   return (
     <>
