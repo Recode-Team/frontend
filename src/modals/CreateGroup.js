@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form, Container } from 'react-bootstrap';
 import './sign_style.css';
 
 export const CreateGroup = ({ show, onHide, setGroups }) => {
-//   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
+  const ipAddress = process.env.REACT_APP_IP_ADDRESS;
 
   const [groupName, setGroupName] = useState("");
   const [groupInfo, setGroupInfo] = useState("");
@@ -18,38 +18,48 @@ export const CreateGroup = ({ show, onHide, setGroups }) => {
     setGroupInfo(event.currentTarget.value);
   }
 
-//   const onSubmitHandler = (event) => {
-//     event.preventDefault();
-//     const user = { email: email, password: password };
-
-//     fetch(`${ipAddress}/api/login`, {
-//       method: 'POST',
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(user),
-//     })
-//       .then((response) => response.json())
-//       .then((result) => {
-//         console.log("result: ", result);
-//         setIsLogin(true);
-//         const welcomeMessage = document.getElementById('welcome-message');
-//         welcomeMessage.textContent = `환영합니다 ${result.results.name}님!`;
-//         onHide();
-//       })
-//       .catch(error => console.error(error));
-// }
+  // useEffect(() => {
+  //   fetch(`${ipAddress}/api/group`, {
+  //     method: 'POST',
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Authorization": localStorage.getItem("token"),
+  //     },
+  //     body: JSON.stringify({}),
+  //   })
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       setGroups(result.groups);
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  //   }, []);
 
     const onCreateHandler = (event) => {
         event.preventDefault();
         const newGroup = {
             name: groupName,
-            info: groupInfo
+            comment: groupInfo
         };
-        setGroups((prevGroups) => [...prevGroups, newGroup]);
 
-        onHide();
-    }
+        fetch(`${ipAddress}/api/group`, {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application.json",
+            "Authorization": localStorage.getItem("token"),
+          },
+          body: JSON.stringify(newGroup),
+        })
+        .then((response) => response.json())
+        .then((result) => {
+          setGroups((prevGroups) => [...prevGroups, newGroup]);
+          onHide();
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    };
 
   return (
     <Modal
