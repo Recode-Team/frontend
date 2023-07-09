@@ -36,6 +36,7 @@ export const Login = ({ show, onHide, setIsLogin, setShowLogin }) => {
           localStorage.setItem('token', result.results.token);
         }
         console.log("result: ", result);
+        console.log(result.results.token);
         setIsLogin(true);
         setToken(result.results.token);
         onHide();
@@ -51,13 +52,6 @@ export const Login = ({ show, onHide, setIsLogin, setShowLogin }) => {
   const hideSignUpModal = () => {
     setShowSignUp(false);
   };
-
-  // useEffect(() => {
-  //   if (token) {
-  //     alert("Token 값: " + token);
-  //     console.log(token)
-  //   }
-  // }, [token]);
 
   return (
     <>

@@ -8,9 +8,6 @@ export const CreateGroup = ({ show, onHide, setGroups }) => {
   const [groupName, setGroupName] = useState("");
   const [groupInfo, setGroupInfo] = useState("");
 
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-
   const ongNameHandler = (event) => {
     setGroupName(event.currentTarget.value);
   }
@@ -18,41 +15,25 @@ export const CreateGroup = ({ show, onHide, setGroups }) => {
     setGroupInfo(event.currentTarget.value);
   }
 
-  // useEffect(() => {
-  //   fetch(`${ipAddress}/api/group`, {
-  //     method: 'POST',
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Authorization": localStorage.getItem("token"),
-  //     },
-  //     body: JSON.stringify({}),
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       setGroups(result.groups);
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  //   }, []);
-
     const onCreateHandler = (event) => {
         event.preventDefault();
         const newGroup = {
             name: groupName,
             comment: groupInfo
         };
+        console.log(newGroup);
 
         fetch(`${ipAddress}/api/group`, {
           method: 'POST',
           headers: {
-            "Content-Type": "application.json",
+            "Content-Type": "application/json",
             "Authorization": localStorage.getItem("token"),
           },
           body: JSON.stringify(newGroup),
         })
         .then((response) => response.json())
         .then((result) => {
+          console.log("result", result);
           setGroups((prevGroups) => [...prevGroups, newGroup]);
           onHide();
         })
