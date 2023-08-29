@@ -1,56 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form, Container } from 'react-bootstrap';
 import './sign_style.css';
 
 export const CreateGroup = ({ show, onHide, setGroups }) => {
-//   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
+  const ipAddress = process.env.REACT_APP_IP_ADDRESS;
 
   const [groupName, setGroupName] = useState("");
-  const [groupInfo, setGroupInfo] = useState("");
-
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
+  const [groupComment, setGroupComment] = useState("");
+  
+  const [isGroupName, setIsGroupName] = useState(false);
+  const [isGroupComment, setIsGroupComment] = useState(false);
 
   const ongNameHandler = (event) => {
-    setGroupName(event.currentTarget.value);
+    const value = event.currentTarget.value;
+    setGroupName(value);
+    setIsGroupName(value.trim() !== "");
   }
-  const ongInfoHandler = (event) => {
-    setGroupInfo(event.currentTarget.value);
+  const onCommentHandler = (event) => {
+    const value = event.currentTarget.value;
+    setGroupComment(value);
+    setIsGroupComment(value.trim() !== "");
   }
 
-//   const onSubmitHandler = (event) => {
-//     event.preventDefault();
-//     const user = { email: email, password: password };
+  const onCreateHandler = (event) => {
+    event.preventDefault();
+    const newGroup = {
+      groupname: groupName,
+      comment: groupComment
+    };
 
-//     fetch(`${ipAddress}/api/login`, {
-//       method: 'POST',
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(user),
-//     })
-//       .then((response) => response.json())
-//       .then((result) => {
-//         console.log("result: ", result);
-//         setIsLogin(true);
-//         const welcomeMessage = document.getElementById('welcome-message');
-//         welcomeMessage.textContent = `환영합니다 ${result.results.name}님!`;
-//         onHide();
-//       })
-//       .catch(error => console.error(error));
-// }
-
-    const onCreateHandler = (event) => {
-        event.preventDefault();
-        const newGroup = {
-            name: groupName,
-            info: groupInfo
-        };
-        setGroups((prevGroups) => [...prevGroups, newGroup]);
-
-        onHide();
-    }
-
+    fetch(`${ipAddress}/api/group`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"),
+      },
+      body: JSON.stringify(newGroup),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+      setGroups((prevGroups) => [...prevGroups, newGroup]);
+      // setGroups((prevGroups) => [...(prevGroups || []), newGroup]);
+      onHide();
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+  
   return (
     <Modal
       show = {show}
@@ -66,21 +63,18 @@ export const CreateGroup = ({ show, onHide, setGroups }) => {
         <Form>
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
-            {/* <Form.Control type="id" placeholder="그룹 이름" value={email} onChange={onEmailHandler}/> */}
             <Form.Control type="groupname" placeholder="그룹 이름" value={groupName} onChange={ongNameHandler} />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
-            {/* <Form.Control type="password" placeholder="그룹 설명" value={password} onChange={onPasswordHandler}/> */}
-            <Form.Control type="groupinfo" placeholder="그룹 설명" value={groupInfo} onChange={ongInfoHandler} />
+            <Form.Control type="groupcomment" placeholder="그룹 설명" value={groupComment} onChange={onCommentHandler} />
           </Form.Group>
         </Form>
         <div id="welcome-message"></div>
       </Modal.Body>
       <Modal.Footer>
-        {/* <button className="modal-btn" type="button" onClick={onSubmitHandler}>완료</button> */}
-        <button className="modal-btn" type="button" onClick={onCreateHandler} >완료</button>
+        <button className="modal-btn" type="button" disabled={!isGroupName || !isGroupComment} onClick={onCreateHandler} >완료</button>
       </Modal.Footer>
     </Container>
     </Modal>

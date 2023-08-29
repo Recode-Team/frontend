@@ -1,16 +1,21 @@
-import { Tldraw, useFileSystem } from "@tldraw/tldraw";
+import { Tldraw, TldrawApp, useFileSystem } from "@tldraw/tldraw";
 import { useUsers } from "y-presence";
 import { useMultiplayerState } from "./hooks/useMultiplayerState";
 import "./board.css";
 import { awareness, roomID } from "./store";
 import Recording from "../Video/Recording";
+import { createRef, useEffect, useRef } from "react";
 
 function Editor({ roomId }: { roomId: string }) {
   const fileSystemEvents = useFileSystem();
   const { onMount, ...events } = useMultiplayerState(roomId);
 
+  const ref = useRef()
+
   return (
     <Tldraw
+      // @ts-ignore
+      ref={ref}
       autofocus
       disableAssets
       showPages={false}
