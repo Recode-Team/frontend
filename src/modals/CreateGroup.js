@@ -23,6 +23,8 @@ export const CreateGroup = ({ show, onHide, setGroups }) => {
         };
         console.log(newGroup);
 
+        console.log("New", newGroup);
+
         fetch(`${ipAddress}/api/group`, {
           method: 'POST',
           headers: {
@@ -35,6 +37,8 @@ export const CreateGroup = ({ show, onHide, setGroups }) => {
         .then((result) => {
           console.log("result", result);
           setGroups((prevGroups) => [...prevGroups, newGroup]);
+          console.log(newGroup);
+          // setGroups((prevGroups) => [...(prevGroups || []), newGroup]);
           onHide();
         })
         .catch(error => {
