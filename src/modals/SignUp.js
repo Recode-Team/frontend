@@ -75,7 +75,7 @@ export const SignUp = ({ show, onHide, setShowSignUp }) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const user = { email: email, name: name, password: password };
-
+  
     fetch(`${ipAddress}/api/register`, {
       method: 'POST',
       headers: {
@@ -84,8 +84,17 @@ export const SignUp = ({ show, onHide, setShowSignUp }) => {
       body: JSON.stringify(user),
     })
       .then((response) => response.json())
-      .then((result) => console.log("results: ", result))
-      setShowSignUp(false)
+      .then((result) => {
+        console.log("results: ", result);
+        if (result.status === "ok") {
+          onHide(); // 회원가입 성공 시 모달 닫기
+        } else if (result.status === "conflict") {
+          alert(result.error); // 회원가입 실패 시 에러 메시지 알림
+        } else if (result.status === "not found") {
+          alert(result.error); // 회원가입 실패 시 에러 메시지 알림
+        }
+      })
+      // setShowSignUp(false);
       .catch(error => console.error(error));
   }
 

@@ -17,14 +17,16 @@ const Group = () => {
             "Authorization": localStorage.getItem("token"),
           },
         })
+          
           .then(response => response.json())
           .then(result => {
-            setGroups(result.groups);
+            setGroups(result);
           })
           .catch(error => {
             console.error(error);
           });
-        }, []);
+        }, [ipAddress]);
+
 
 return (
     <>
@@ -50,7 +52,7 @@ return (
                 <a href="/boardlist">Enter the Group</a>
               </div>
             </article>
-            {groups.map((group, index) => (
+            {groups && groups.map((group, index) => (
               <article className="card" key={index}>
                 <div className="card-header">
                   <div className="card-header-1">
@@ -59,7 +61,7 @@ return (
                   </div>
                 </div>
                 <div className="card-body">
-                  <p className="card-body-txt">{group.info}</p>
+                  <p className="card-body-txt">{group.comment}</p>
                 </div>
                 <div className="card-footer">
                   <a href="/boardlist">Enter the group</a>
