@@ -6,46 +6,48 @@ export const CreateGroup = ({ show, onHide, setGroups }) => {
   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
 
   const [groupName, setGroupName] = useState("");
-  const [groupInfo, setGroupInfo] = useState("");
+  const [groupComment, setGroupComment] = useState("");
+  
+  const [isGroupName, setIsGroupName] = useState(false);
+  const [isGroupComment, setIsGroupComment] = useState(false);
 
   const ongNameHandler = (event) => {
-    setGroupName(event.currentTarget.value);
+    const value = event.currentTarget.value;
+    setGroupName(value);
+    setIsGroupName(value.trim() !== "");
   }
-  const ongInfoHandler = (event) => {
-    setGroupInfo(event.currentTarget.value);
+  const onCommentHandler = (event) => {
+    const value = event.currentTarget.value;
+    setGroupComment(value);
+    setIsGroupComment(value.trim() !== "");
   }
 
-    const onCreateHandler = (event) => {
-        event.preventDefault();
-        const newGroup = {
-            name: groupName,
-            comment: groupInfo
-        };
-        console.log(newGroup);
-
-        console.log("New", newGroup);
-
-        fetch(`${ipAddress}/api/group`, {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": localStorage.getItem("token"),
-          },
-          body: JSON.stringify(newGroup),
-        })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log("result", result);
-          setGroups((prevGroups) => [...prevGroups, newGroup]);
-          console.log(newGroup);
-          // setGroups((prevGroups) => [...(prevGroups || []), newGroup]);
-          onHide();
-        })
-        .catch(error => {
-          console.error(error);
-        });
+  const onCreateHandler = (event) => {
+    event.preventDefault();
+    const newGroup = {
+      groupname: groupName,
+      comment: groupComment
     };
 
+    fetch(`${ipAddress}/api/group`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"),
+      },
+      body: JSON.stringify(newGroup),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+      setGroups((prevGroups) => [...prevGroups, newGroup]);
+      // setGroups((prevGroups) => [...(prevGroups || []), newGroup]);
+      onHide();
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+  
   return (
     <Modal
       show = {show}
@@ -61,21 +63,18 @@ export const CreateGroup = ({ show, onHide, setGroups }) => {
         <Form>
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
-            {/* <Form.Control type="id" placeholder="그룹 이름" value={email} onChange={onEmailHandler}/> */}
             <Form.Control type="groupname" placeholder="그룹 이름" value={groupName} onChange={ongNameHandler} />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label></Form.Label>
-            {/* <Form.Control type="password" placeholder="그룹 설명" value={password} onChange={onPasswordHandler}/> */}
-            <Form.Control type="groupinfo" placeholder="그룹 설명" value={groupInfo} onChange={ongInfoHandler} />
+            <Form.Control type="groupcomment" placeholder="그룹 설명" value={groupComment} onChange={onCommentHandler} />
           </Form.Group>
         </Form>
         <div id="welcome-message"></div>
       </Modal.Body>
       <Modal.Footer>
-        {/* <button className="modal-btn" type="button" onClick={onSubmitHandler}>완료</button> */}
-        <button className="modal-btn" type="button" onClick={onCreateHandler} >완료</button>
+        <button className="modal-btn" type="button" disabled={!isGroupName || !isGroupComment} onClick={onCreateHandler} >완료</button>
       </Modal.Footer>
     </Container>
     </Modal>

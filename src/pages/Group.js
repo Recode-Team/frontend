@@ -57,7 +57,7 @@ return (
                 <div className="card-header">
                   <div className="card-header-1">
                     <span className="card-header-2"><img className="card-header-3" alt="" src={folder} /></span>
-                    <p className="card-header-4">{groups.name}</p>
+                    <p className="card-header-4">{group.groupname}</p>
                   </div>
                 </div>
                 <div className="card-body">
