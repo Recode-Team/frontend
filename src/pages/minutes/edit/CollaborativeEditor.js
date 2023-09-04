@@ -39,7 +39,13 @@ const CollaborationComponent = () => {
       }
     });
 
-    fetch(`${ipAddress}/api/meeting-minutes/${id}`)
+    fetch(`${ipAddress}/api/minutes/${id}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"),
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setTitle(data.results.minutes.title);
@@ -74,7 +80,7 @@ const CollaborationComponent = () => {
       socketRef.current.close(); // WebSocket 연결 종료
       window.removeEventListener('resize', handleResize);
     };
-  }, [id]);
+  }, [id, ipAddress]);
 
   const handleSetText = useCallback((updatedText) => {
     setText(updatedText);
@@ -102,7 +108,7 @@ const CollaborationComponent = () => {
     })
       .then((response) => response)
       .catch((error) => console.error('Failed to update meeting details:', error));
-  }, [id, text, title]);
+  }, [id, text, title, ipAddress]);
 
   const handleGoBack = useCallback(() => {
     navigate(-1);
@@ -127,7 +133,8 @@ const CollaborationComponent = () => {
           </div>
         </div>
         <div className="editor-title">
-          <p className="editor-title-txt">{title}</p>
+          {/* <p className="editor-title-txt">{title}</p> */}
+          <textarea className="editor-title-txt" value={title} style={{height:"36px"}}></textarea>
         </div>
         <div className="editor-container">
           <div id="editor-content">
