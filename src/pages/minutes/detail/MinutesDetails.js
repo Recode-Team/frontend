@@ -23,7 +23,13 @@ function MinutesDetails() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${ipAddress}/api/meeting-minutes/${id}`)
+    fetch(`${ipAddress}/api/minutes/${id}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"),
+      },
+    })
       .then((response) => response.json())
       .then((data) => setMeeting(data.results.minutes))
       .catch((error) => console.error('Failed to fetch meeting details:', error));

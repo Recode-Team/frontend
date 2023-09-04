@@ -39,7 +39,13 @@ const CollaborationComponent = () => {
       }
     });
 
-    fetch(`${ipAddress}/api/meeting-minutes/${id}`)
+    fetch(`${ipAddress}/api/minutes/${id}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"),
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setTitle(data.results.minutes.title);

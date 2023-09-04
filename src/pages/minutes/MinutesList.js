@@ -9,8 +9,13 @@ function MinutesList() {
   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
 
   useEffect(() => {
-    // fetch('http://127.0.0.1:27000/api/meeting-minutes')
-    fetch(`${ipAddress}/api/meeting-minutes`)
+    fetch(`${ipAddress}/api/minutes`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"),
+      },
+    })
       .then((response) => response.json())
       .then((data) => setMeetingMinutes(data.results.minutes))
       .catch((error) => console.error('Failed to fetch meeting minutes:', error));
@@ -23,10 +28,10 @@ function MinutesList() {
         <h1 className="group-header-txt">Minutes List</h1>
         <div className="content-main">
           <div className="card-grid">
-              {meetingMinutes.length > 0 ? (
+              {meetingMinutes ? (
                 meetingMinutes.map((meeting, index) => (
                   <article className="card">
-                    <React.Fragment key={meeting.id}>
+                    <React.Fragment key={index}>
                     <div className="bulletin-title card-header">
                       <div className="card-header-1">
                         <span className="card-header-2"><img className="card-header-3" alt="" src={postit}></img></span>
@@ -39,7 +44,6 @@ function MinutesList() {
                     <div className="card-footer">
                       <Link to={`/minutes/${meeting.id}`}>View Minutes</Link>
                     </div>
-                    {/* {index !== meetingMinutes.length - 1 && <hr className="bulletin-divider" />} */}
                     </React.Fragment>
                   </article>
                   ))
