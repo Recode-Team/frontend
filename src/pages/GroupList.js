@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import CreateGroup from "../modals/CreateGroup";
-import folder from "./icon/folder.png";
-import "./style.css";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import CreateGroup from '../modals/CreateGroup';
+import folder from './icon/folder.png';
+import './style.css';
 
-const Group = () => {
+const GroupList = () => {
   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
 
   const [CreateOn, setCreateOn] = useState(false);
@@ -12,10 +12,10 @@ const Group = () => {
 
   useEffect(() => {
     fetch(`${ipAddress}/api/group/`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: localStorage.getItem("token"),
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then((response) => response.json())
@@ -29,11 +29,7 @@ const Group = () => {
 
   return (
     <>
-      <CreateGroup
-        show={CreateOn}
-        onHide={() => setCreateOn(false)}
-        setGroups={setGroups}
-      />
+      <CreateGroup show={CreateOn} onHide={() => setCreateOn(false)} setGroups={setGroups} />
       <div className="responsive-wrapper">
         <div className="group-header">
           <h1 className="group-header-txt">My Group</h1>
@@ -44,9 +40,9 @@ const Group = () => {
         <div className="content-main">
           <div className="card-grid">
             {groups.length > 0 ? (
-              groups.map((group, index) => (
+              groups.map((group) => (
                 <article className="card">
-                  <React.Fragment key={index}>
+                  <React.Fragment key={group.id}>
                     <div className="card-header">
                       <div className="card-header-1">
                         <span className="card-header-2">
@@ -56,7 +52,7 @@ const Group = () => {
                       </div>
                     </div>
                     <div className="card-body">
-                      <p className="card-body-txt">{group.comment}</p>
+                      <p className="card-body-txt">{group.groupcomment}</p>
                     </div>
                     <div className="card-footer">
                       <Link to={`/boardlist/${group.id}`}>Enter the group</Link>
@@ -74,4 +70,4 @@ const Group = () => {
   );
 };
 
-export default Group;
+export default GroupList;

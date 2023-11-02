@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import "./style.css"
+import './style.css';
 
 const Recording = () => {
   const previewPlayerRef = useRef(null);
@@ -39,17 +39,17 @@ const Recording = () => {
     const formData = new FormData();
     formData.append('audioFile', blob);
     formData.append('encoding', 'MP3');
-  
+
     try {
-      const response = await fetch(`${ipAddress}/api/gpt/minutes/create`, {
+      const response = await fetch(`${ipAddress}/api/minutes/create`, {
         method: 'POST',
         body: formData,
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         const regex = /[ㄱ-ㅎㅏ-ㅣ가-힣\s]+/g;
-  
+
         if (data.result && data.result.transcription && data.result.summary && data.result.title) {
           const transcription = data.result.transcription.match(regex).join('');
           const summary = data.result.summary.match(regex).join('');
@@ -65,9 +65,9 @@ const Recording = () => {
       console.error('오디오 파일 업로드 중 오류가 발생했습니다:', error);
     }
   };
-  
+
   const stopRecording = () => {
-    previewPlayerRef.current.srcObject.getTracks().forEach(track => track.stop());
+    previewPlayerRef.current.srcObject.getTracks().forEach((track) => track.stop());
     mediaRecorderRef.current.stop();
     setRecording(false);
   };
@@ -82,11 +82,15 @@ const Recording = () => {
 
   return (
     <>
-      <div className='button'>
+      <div className="button">
         {recording ? (
-          <button className="stop-button" onClick={stopRecording}>녹음 종료</button>
+          <button className="stop-button" onClick={stopRecording}>
+            녹음 종료
+          </button>
         ) : (
-          <button className="record-button" onClick={videoStart}>녹음 시작</button>
+          <button className="record-button" onClick={videoStart}>
+            녹음 시작
+          </button>
         )}
       </div>
       <div className="video-container">
@@ -94,11 +98,9 @@ const Recording = () => {
       </div>
     </>
   );
-}
+};
 
 export default Recording;
-
-
 
 // import React, { useRef, useState } from 'react';
 // import "./style.css"
@@ -126,9 +128,9 @@ export default Recording;
 //     setRecording(true); // 녹화 상태로 설정
 //     recordedChunksRef.current = []; // 기존에 기록된 청크 초기화
 //     mediaRecorderRef.current = new MediaRecorder(stream); // 미디어 레코더 생성 및 설정
-    
+
 //     // 데이터 이용 가능 이벤트 핸들러 등록
-//     mediaRecorderRef.current.addEventListener('dataavailable', handleDataAvailable); 
+//     mediaRecorderRef.current.addEventListener('dataavailable', handleDataAvailable);
 //     mediaRecorderRef.current.addEventListener('stop', handleStop); // 정지 이벤트 핸들러
 
 //     mediaRecorderRef.current.start(); // 녹화 시작
@@ -140,7 +142,6 @@ export default Recording;
 //       recordedChunksRef.current.push(event.data);
 //     }
 //   };
-
 
 //   const handleStop = async () => {
 //     // 녹화 중지 후 파일 다운로드
@@ -158,15 +159,15 @@ export default Recording;
 //     a.click();
 //     document.body.removeChild(a);
 //     URL.revokeObjectURL(url);
-  
+
 //     // formData에 url 추가
 //     const formData = new FormData();
 //     const file = new File([blob], a.download, { type: 'audio/mp3' }); // 파일 객체 생성
 //     formData.append('audioFile', file);
-  
+
 //     // 나머지 코드 실행
 //     formData.append('encoding', 'MP3');
-  
+
 //     const response = await fetch(`${ipAddress}/api/gpt/minutes/create`, {
 //       method: 'POST',
 //       body: formData,
@@ -175,7 +176,7 @@ export default Recording;
 //     const regex = /[ㄱ-ㅎㅏ-ㅣ가-힣\s]+/g;
 //     const transcription = data.transcription.match(regex).join('');
 //     const summary = data.summary.match(regex).join('');
-  
+
 //     setMinutes({ transcription, summary });
 //   };
 
@@ -188,10 +189,8 @@ export default Recording;
 //   //   const a = document.createElement('a'); // a태그 기능 저장
 //   //   a.style.display = 'none';
 //   //   a.href = url;
-    
+
 //   //   a.download = `recording_${new Date()}.mp3`; // 오디오
-
-
 
 //   //   // a.download = `recording_${new Date()}.mp4`; // 오디오 + 영상
 //   //   document.body.appendChild(a);
@@ -200,11 +199,10 @@ export default Recording;
 //   //   URL.revokeObjectURL(url);
 //   // };
 
-
 //   // const formData = new FormData();
 //   //   formData.append('audioFile', file);
 //   //   formData.append('encoding', 'MP3');
-  
+
 //   //   const response = await fetch('http://localhost:5000/create-minutes', {
 //   //     method: 'POST',
 //   //     body: formData,
@@ -215,7 +213,6 @@ export default Recording;
 //   //   const summary = data.summary.match(regex).join('');
 
 //   //   setMinutes({ transcription, summary });
-
 
 //   const stopRecording = () => {
 //     // 미리보기 비디오 플레이어의 트랙 중지
