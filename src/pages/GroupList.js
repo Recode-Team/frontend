@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CreateGroup from '../modals/CreateGroup';
+import InviteGroup from '../modals/InviteGroup';
 import folder from './icon/folder.png';
-import trash from './icon/trash.png';
+import plus from './icon/plus.png';
+import minus from './icon/minus.png';
 import Swal from 'sweetalert2';
 import './style.css';
 
@@ -11,7 +13,9 @@ const GroupList = () => {
 
   const [CreateOn, setCreateOn] = useState(false);
   const [groups, setGroups] = useState([]);
-  
+  const [inviteOn, setInviteOn] = useState(false);
+
+  // const inviteGroup = (groupId) => {};
   // 삭제 기능
   const deleteGroup = (groupId) => {
     const updatedGroups = groups.filter((group) => group.id !== groupId);
@@ -38,7 +42,16 @@ const GroupList = () => {
 
   return (
     <>
-      <CreateGroup show={CreateOn} onHide={() => setCreateOn(false)} setGroups={setGroups} />
+      <CreateGroup
+        show={CreateOn}
+        onHide={() => setCreateOn(false)}
+        setGroups={setGroups}
+      />
+      <InviteGroup
+        show={inviteOn}
+        onHide={() => setInviteOn(false)}
+        // setGroups={setGroups}
+      />
       <div className="responsive-wrapper">
         <div className="group-header">
           <h1 className="group-header-txt">My Group</h1>
@@ -65,9 +78,19 @@ const GroupList = () => {
                     </div>
                     <div className="card-footer">
                       <Link to={`/boardlist/${group.id}`}>Enter the group</Link>
+                      {/* 팀원 초대 버튼 */}
+                      <button
+                        className="invite-button"
+                        onClick={() => setInviteOn(true)}
+                      >
+                        <img width="50px" height="50px" alt="" src={plus} />
+                      </button>
                       {/* 삭제 버튼 */}
-                      <button className="delete-button" onClick={() => deleteGroup(group.id)}>
-                        <img width="50px" height="50px" alt="" src={trash}/>
+                      <button
+                        className="delete-button"
+                        onClick={() => deleteGroup(group.id)}
+                      >
+                        <img width="50px" height="50px" alt="" src={minus} />
                       </button>
                     </div>
                   </React.Fragment>

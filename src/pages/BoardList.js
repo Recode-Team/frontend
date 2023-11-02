@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CreateBoard from '../modals/CreateBoard';
 import pencil from './icon/pencil.png';
-import trash from './icon/trash.png';
+import minus from './icon/minus.png';
 import Swal from 'sweetalert2';
 import './style.css';
 
@@ -41,7 +41,11 @@ const BoardList = () => {
 
   return (
     <>
-      <CreateBoard show={CreateOn} onHide={() => setCreateOn(false)} setBoards={setBoards} />
+      <CreateBoard
+        show={CreateOn}
+        onHide={() => setCreateOn(false)}
+        setBoards={setBoards}
+      />
       <div className="responsive-wrapper">
         <div className="group-header">
           <h1 className="group-header-txt">My Board</h1>
@@ -69,8 +73,11 @@ const BoardList = () => {
                     <div className="card-footer">
                       <Link to={`/board/${board.id}`}>Enter the board</Link>
                       {/* 삭제 버튼 */}
-                      <button className="delete-button" onClick={() => deleteBoard(index)}>
-                        <img width="50px" height="50px" alt="" src={trash}/>
+                      <button
+                        className="delete-button"
+                        onClick={() => deleteBoard(index)}
+                      >
+                        <img width="50px" height="50px" alt="" src={minus} />
                       </button>
                     </div>
                   </React.Fragment>
