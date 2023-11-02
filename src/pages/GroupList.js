@@ -11,6 +11,13 @@ const GroupList = () => {
 
   const [CreateOn, setCreateOn] = useState(false);
   const [groups, setGroups] = useState([]);
+  
+  // 삭제 기능
+  const deleteGroup = (groupId) => {
+    const updatedGroups = groups.filter((group) => group.id !== groupId);
+    setGroups(updatedGroups);
+    Swal.fire('삭제 완료!', '그룹이 성공적으로 삭제되었습니다.', 'success');
+  };
 
   useEffect(() => {
     fetch(`${ipAddress}/api/group/`, {
@@ -28,14 +35,6 @@ const GroupList = () => {
         console.error(error);
       });
   }, [ipAddress]);
-
-    // 삭제 기능
-    const deleteGroup = (groupIndex) => {
-      const updatedGroups = [...groups];
-      updatedGroups.splice(groupIndex, 1);
-      setGroups(updatedGroups);
-      Swal.fire('삭제 완료!', '그룹이 성공적으로 삭제되었습니다.', 'success');
-    };
 
   return (
     <>
