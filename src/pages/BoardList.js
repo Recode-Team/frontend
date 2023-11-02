@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CreateBoard from '../modals/CreateBoard';
+import InviteGroup from '../modals/InviteGroup';
+import plus from './icon/plus.png';
 import pencil from './icon/pencil.png';
 import minus from './icon/minus.png';
 import Swal from 'sweetalert2';
@@ -11,6 +13,7 @@ const BoardList = () => {
 
   const [CreateOn, setCreateOn] = useState(false);
   const [boards, setBoards] = useState([]);
+  const [inviteOn, setInviteOn] = useState(false);
 
   const { id } = useParams();
 
@@ -46,11 +49,20 @@ const BoardList = () => {
         onHide={() => setCreateOn(false)}
         setBoards={setBoards}
       />
+      <InviteGroup
+        show={inviteOn}
+        onHide={() => setInviteOn(false)}
+        // setGroups={setGroups}
+      />
       <div className="responsive-wrapper">
         <div className="group-header">
           <h1 className="group-header-txt">My Board</h1>
           <button className="create-btn" onClick={() => setCreateOn(true)}>
             Create
+          </button>
+          {/* 팀원 초대 버튼 */}
+          <button className="invite-button" onClick={() => setInviteOn(true)}>
+            <img width="50px" height="50px" alt="" src={plus} />
           </button>
         </div>
         <div className="content-main">
