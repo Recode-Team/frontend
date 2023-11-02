@@ -99,7 +99,7 @@ const CollaborationComponent = () => {
     };
 
     // API 호출하여 데이터베이스에 저장
-    fetch(`${ipAddress}/api/meeting-minutes/${id}`, {
+    fetch(`${ipAddress}/api/minutes/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
