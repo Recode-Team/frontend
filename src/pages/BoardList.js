@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CreateBoard from '../modals/CreateBoard';
 import pencil from './icon/pencil.png';
+import trash from './icon/trash.png';
+import Swal from 'sweetalert2';
 import './style.css';
 
 const BoardList = () => {
@@ -28,6 +30,14 @@ const BoardList = () => {
         console.error(error);
       });
   }, [id, ipAddress]);
+
+  // 삭제 기능
+  const deleteBoard = (boardIndex) => {
+    const updatedBoards = [...boards];
+    updatedBoards.splice(boardIndex, 1);
+    setBoards(updatedBoards);
+    Swal.fire('삭제 완료!', '보드가 성공적으로 삭제되었습니다.', 'success');
+  };
 
   return (
     <>
@@ -58,6 +68,10 @@ const BoardList = () => {
                     </div>
                     <div className="card-footer">
                       <Link to={`/board/${board.id}`}>Enter the board</Link>
+                      {/* 삭제 버튼 */}
+                      <button className="delete-button" onClick={() => deleteBoard(index)}>
+                        <img width="50px" height="50px" alt="" src={trash}/>
+                      </button>
                     </div>
                   </React.Fragment>
                 </article>

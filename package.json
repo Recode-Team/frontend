@@ -34,6 +34,7 @@
     "remark-gfm": "^3.0.1",
     "socket.io-client": "^4.6.1",
     "styled-components": "^5.3.11",
+    "sweetalert2": "^11.9.0",
     "typescript": "^5.0.4",
     "web-vitals": "^2.1.4",
     "y-presence": "^0.2.3",

@@ -394,3 +394,7 @@ body::-webkit-scrollbar-track {
     color: #404089;
     text-decoration: none;
 }
+
+.delete-button {
+    background-color: #ffffff;
+}
