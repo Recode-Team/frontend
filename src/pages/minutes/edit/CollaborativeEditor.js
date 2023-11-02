@@ -39,7 +39,13 @@ const CollaborationComponent = () => {
       }
     });
 
-    fetch(`${ipAddress}/api/meeting-minutes/${id}`)
+    fetch(`${ipAddress}/api/minutes/${id}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"),
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setTitle(data.results.minutes.title);
@@ -93,10 +99,11 @@ const CollaborationComponent = () => {
     };
 
     // API 호출하여 데이터베이스에 저장
-    fetch(`${ipAddress}/api/meeting-minutes/${id}`, {
+    fetch(`${ipAddress}/api/minutes/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        "Authorization": localStorage.getItem("token"),
       },
       body: JSON.stringify(requestBody),
     })
