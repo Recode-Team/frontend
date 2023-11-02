@@ -63,19 +63,18 @@ const GroupList = () => {
                         </span>
                         <p className="card-header-4">{group.groupname}</p>
                       </div>
+                      <button
+                        className="delete-button"
+                        onClick={() => deleteGroup(group.id)}
+                      >
+                        <img width="30px" height="30px" alt="" src={minus} />
+                      </button>
                     </div>
                     <div className="card-body">
                       <p className="card-body-txt">{group.groupcomment}</p>
                     </div>
                     <div className="card-footer">
                       <Link to={`/boardlist/${group.id}`}>Enter the group</Link>
-                      {/* 삭제 버튼 */}
-                      <button
-                        className="delete-button"
-                        onClick={() => deleteGroup(group.id)}
-                      >
-                        <img width="50px" height="50px" alt="" src={minus} />
-                      </button>
                     </div>
                   </React.Fragment>
                 </article>

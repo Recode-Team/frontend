@@ -406,8 +406,14 @@ body::-webkit-scrollbar-track {
 
 .invite-button {
   background-color: #ffffff;
+  margin-left: 16px;
+  margin-bottom: 8px;
 }
 
 .delete-button {
   background-color: #ffffff;
+}
+
+.group-name-s {
+  display: flex;
 }

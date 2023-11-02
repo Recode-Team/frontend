@@ -56,14 +56,17 @@ const BoardList = () => {
       />
       <div className="responsive-wrapper">
         <div className="group-header">
-          <h1 className="group-header-txt">My Board</h1>
-          <button className="create-btn" onClick={() => setCreateOn(true)}>
-            Create
-          </button>
-          {/* 팀원 초대 버튼 */}
-          <button className="invite-button" onClick={() => setInviteOn(true)}>
-            <img width="50px" height="50px" alt="" src={plus} />
-          </button>
+          <div className="group-name-s">
+            <h1 className="group-header-txt">My Board</h1>
+            <button className="invite-button" onClick={() => setInviteOn(true)}>
+              <img width="40px" height="40px" alt="" src={plus} />
+            </button>
+          </div>
+          <div>
+            <button className="create-btn" onClick={() => setCreateOn(true)}>
+              Create
+            </button>
+          </div>
         </div>
         <div className="content-main">
           <div className="card-grid">
