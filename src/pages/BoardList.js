@@ -15,11 +15,29 @@ const BoardList = () => {
   const { id } = useParams();
   
   // 삭제 기능
-  const deleteBoard = (boardIndex) => {
-    const updatedBoards = [...boards];
-    updatedBoards.splice(boardIndex, 1);
-    setBoards(updatedBoards);
-    Swal.fire('삭제 완료!', '보드가 성공적으로 삭제되었습니다.', 'success');
+  const deleteBoard = (boardId, index) => {
+    fetch(`${ipAddress}/api/board/${boardId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.state === 'ok') {
+          const updatedBoards = [...boards];
+          updatedBoards.splice(index, 1);
+          setBoards(updatedBoards);
+          Swal.fire('삭제 완료!', '보드가 성공적으로 삭제되었습니다.', 'success');
+        } else {
+          Swal.fire('(server)에러 발생!', '보드 삭제 중 오류가 발생했습니다.', 'error');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire('(client)에러 발생!', '보드 삭제 중 오류가 발생했습니다.', 'error');
+      });
   };
 
   useEffect(() => {
@@ -69,7 +87,7 @@ const BoardList = () => {
                     <div className="card-footer">
                       <Link to={`/board/${board.id}`}>Enter the board</Link>
                       {/* 삭제 버튼 */}
-                      <button className="delete-button" onClick={() => deleteBoard(index)}>
+                      <button className="delete-button" onClick={() => deleteBoard(board.id, index)}>
                         <img width="50px" height="50px" alt="" src={trash}/>
                       </button>
                     </div>
