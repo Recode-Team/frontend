@@ -13,6 +13,14 @@ const BoardList = () => {
   const [boards, setBoards] = useState([]);
 
   const { id } = useParams();
+  
+  // 삭제 기능
+  const deleteBoard = (boardIndex) => {
+    const updatedBoards = [...boards];
+    updatedBoards.splice(boardIndex, 1);
+    setBoards(updatedBoards);
+    Swal.fire('삭제 완료!', '보드가 성공적으로 삭제되었습니다.', 'success');
+  };
 
   useEffect(() => {
     fetch(`${ipAddress}/api/board/${id}`, {
@@ -30,14 +38,6 @@ const BoardList = () => {
         console.error(error);
       });
   }, [id, ipAddress]);
-
-  // 삭제 기능
-  const deleteBoard = (boardIndex) => {
-    const updatedBoards = [...boards];
-    updatedBoards.splice(boardIndex, 1);
-    setBoards(updatedBoards);
-    Swal.fire('삭제 완료!', '보드가 성공적으로 삭제되었습니다.', 'success');
-  };
 
   return (
     <>

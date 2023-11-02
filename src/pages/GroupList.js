@@ -11,12 +11,32 @@ const GroupList = () => {
 
   const [CreateOn, setCreateOn] = useState(false);
   const [groups, setGroups] = useState([]);
-  
+
+  const token = localStorage.getItem('token');
   // 삭제 기능
   const deleteGroup = (groupId) => {
-    const updatedGroups = groups.filter((group) => group.id !== groupId);
-    setGroups(updatedGroups);
-    Swal.fire('삭제 완료!', '그룹이 성공적으로 삭제되었습니다.', 'success');
+    fetch(`${ipAddress}/api/group/${groupId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.state === 'ok') {
+          const updatedGroups = groups.filter((group) => group.id !== groupId);
+          setGroups(updatedGroups);
+          Swal.fire('삭제 완료!', '그룹이 성공적으로 삭제되었습니다.', 'success');
+        } else {
+          Swal.fire('(server)에러 발생!', '그룹 삭제 중 오류가 발생했습니다.', 'error');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire('(client)에러 발생!', '그룹 삭제 중 오류가 발생했습니다.', 'error');
+      });
+
   };
 
   useEffect(() => {
