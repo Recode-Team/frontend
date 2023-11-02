@@ -27,7 +27,10 @@ function App() {
 
           <Route path="/minutes" element={<MinutesList />} />
           <Route path="/minutes/:id" element={<MinutesDetails />} />
-          <Route path="/minutes/:id/edit" element={<CollaborationComponent />} />
+          <Route
+            path="/minutes/:id/edit"
+            element={<CollaborationComponent />}
+          />
         </Routes>
         <Footer />
       </div>

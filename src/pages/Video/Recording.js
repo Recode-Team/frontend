@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './style.css';
 
 const Recording = () => {
@@ -8,6 +9,7 @@ const Recording = () => {
   const recordedChunksRef = useRef([]);
   const ipAddress = process.env.REACT_APP_IP_ADDRESS;
   const [minutes, setMinutes] = useState({ transcription: '', summary: '' });
+  const { id } = useParams();
 
   const videoStart = async () => {
     try {
@@ -23,7 +25,10 @@ const Recording = () => {
     setRecording(true);
     recordedChunksRef.current = [];
     mediaRecorderRef.current = new MediaRecorder(stream);
-    mediaRecorderRef.current.addEventListener('dataavailable', handleDataAvailable);
+    mediaRecorderRef.current.addEventListener(
+      'dataavailable',
+      handleDataAvailable
+    );
     mediaRecorderRef.current.addEventListener('stop', handleStop);
     mediaRecorderRef.current.start();
   };
@@ -41,16 +46,22 @@ const Recording = () => {
     formData.append('encoding', 'MP3');
 
     try {
-      const response = await fetch(`${ipAddress}/api/minutes/create`, {
+      const response = await fetch(`${ipAddress}/api/minutes/${id}`, {
         method: 'POST',
         body: formData,
       });
 
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         const regex = /[ㄱ-ㅎㅏ-ㅣ가-힣\s]+/g;
 
-        if (data.result && data.result.transcription && data.result.summary && data.result.title) {
+        if (
+          data.result &&
+          data.result.transcription &&
+          data.result.summary &&
+          data.result.title
+        ) {
           const transcription = data.result.transcription.match(regex).join('');
           const summary = data.result.summary.match(regex).join('');
           const title = data.result.title.match(regex).join('');
@@ -67,7 +78,9 @@ const Recording = () => {
   };
 
   const stopRecording = () => {
-    previewPlayerRef.current.srcObject.getTracks().forEach((track) => track.stop());
+    previewPlayerRef.current.srcObject
+      .getTracks()
+      .forEach((track) => track.stop());
     mediaRecorderRef.current.stop();
     setRecording(false);
   };
@@ -94,7 +107,12 @@ const Recording = () => {
         )}
       </div>
       <div className="video-container">
-        <video className="preview-video" autoPlay muted ref={previewPlayerRef}></video>
+        <video
+          className="preview-video"
+          autoPlay
+          muted
+          ref={previewPlayerRef}
+        ></video>
       </div>
     </>
   );
