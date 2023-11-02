@@ -81,19 +81,19 @@ const BoardList = () => {
                         </span>
                         <p className="card-header-4">{board.boardname}</p>
                       </div>
+                      {/* 삭제 버튼 */}
+                      <button
+                        className="delete-button"
+                        onClick={() => deleteBoard(index)}
+                      >
+                        <img width="30px" height="30px" alt="" src={minus} />
+                      </button>
                     </div>
                     <div className="card-body">
                       <p className="card-body-txt">{board.boardcomment}</p>
                     </div>
                     <div className="card-footer">
                       <Link to={`/board/${board.id}`}>Enter the board</Link>
-                      {/* 삭제 버튼 */}
-                      <button
-                        className="delete-button"
-                        onClick={() => deleteBoard(index)}
-                      >
-                        <img width="50px" height="50px" alt="" src={minus} />
-                      </button>
                     </div>
                   </React.Fragment>
                 </article>
